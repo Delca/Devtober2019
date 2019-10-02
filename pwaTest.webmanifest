@@ -1,0 +1,16 @@
+{
+  "name": "PWA Test",
+  "short_name": "pwaTest",
+  "description": "A test PWA for devtober2019",
+  "icons": [
+    {
+      "src": "icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/pwaTest/index.html",
+  "display": "fullscreen",
+  "theme_color": "#886688",
+  "background-color": "#443344"
+}
