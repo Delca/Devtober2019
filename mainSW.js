@@ -1,15 +1,15 @@
-self.importScripts('/pwaTest/data.js');
+self.importScripts('/Devtober2019/data.js');
 
 console.log('[SW] Done loading data', companies.electronics);
 
 var cacheName = 'pwaTest';
 var appFiles = [
-    '/pwaTest/',
-    '/pwaTest/index.html',
-    '/pwaTest/pwaTest.webmanifest',
-    '/pwaTest/app.js',
-    '/pwaTest/data.js',
-    '/pwaTest/mainSW.js',
+    '/Devtober2019/',
+    '/Devtober2019/index.html',
+    '/Devtober2019/pwaTest.webmanifest',
+    '/Devtober2019/app.js',
+    '/Devtober2019/data.js',
+    '/Devtober2019/mainSW.js',
 ];
 
 // Register a handler for the service worker installation hook
@@ -19,7 +19,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(cacheName).then((cache) => {
             console.log('[SW] Caching app content ' + appFiles);
-            return cache.addAll(appFiles.map(e=>'http://localhost:8080'+e));
+            return cache.addAll(appFiles);
         })
     );
 

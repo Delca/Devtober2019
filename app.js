@@ -1,3 +1,3 @@
 if ('serviceWorker' in navigator) {
-   navigator.serviceWorker.register('/pwaTest/mainSW.js');
+   navigator.serviceWorker.register('/Devtober2019/mainSW.js');
 }
