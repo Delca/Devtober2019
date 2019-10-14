@@ -3,12 +3,43 @@
 <head>
     <link rel="icon" href="icons/icon-192.png" type="image/png">
     <link rel="manifest" href="pwaTest.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script type="text/javascript" src="lib/zxing.min.js"></script>
 	<script src="app.js" defer></script>
 </head>
-<body style="background-color: #443344;">
-    <h2>
-        Hi!
-    </h2>
-    <button onclick="alert('It works!')">Click me!</button>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+            Hello World
+            </h1>
+            <p class="subtitle">
+            My first website with <strong>Bulma</strong>!
+            </p>
+            <button onclick="openScannerModal()">Open scanner</button>
+        </div>
+    </section>
+
+    <template id="scanner-modal">
+        <div class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <section class="modal-card-body" style="padding: 0;">
+                    <video
+                        id="video"
+                        width="1280"
+                        height="960"
+                        style="border: 1px solid gray"
+                        ></video>
+                </section>
+                <footer class="modal-card-foot" style="justify-content: center;">
+                    <button class="button is-success" onclick="closeScannerModal()">Close</button>
+                </footer>
+            </div>
+        </div>
+    </template>
 </body>
 </html>

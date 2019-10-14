@@ -30,7 +30,7 @@ self.addEventListener('install', (event) => {
 self.addEventListener('fetch', (e) => {
     e.respondWith(caches.match(e.request).then((resource) => {
         console.log('[SW] Fetching resource ' + e.request.url);
-        return resource || fetch(e.request).then((response) => {
+        return (false && resource) || fetch(e.request).then((response) => {
             return caches.open(cacheName).then((cache) => {
                 console.log('[SW] Caching new resource ' + e.request.url);
                 cache.put(e.request, response.clone());
