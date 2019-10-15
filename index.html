@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script type="text/javascript" src="lib/zxing.min.js"></script>
 	<script src="app.js" defer></script>
@@ -37,6 +38,26 @@
                 </section>
                 <footer class="modal-card-foot" style="justify-content: center;">
                     <button class="button is-success" onclick="closeScannerModal()">Close</button>
+                </footer>
+            </div>
+        </div>
+    </template>
+    
+    <template id="scanner-result-modal">
+        <div class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">Results</header>
+                <section class="modal-card-body">
+                    <div class="tags has-addons" style="margin-bottom: 0;">
+                        <span class="tag is-dark">
+                            <i class="fas fa-align-justify" style="transform: rotate(90deg);"></i>
+                        </span>
+                        <span class="tag">8 001250 180414</span>
+                    </div>
+                </section>
+                <footer class="modal-card-foot" style="justify-content: center;">
+                    <button class="button is-success" onclick="closeScannerResultModal()">Close</button>
                 </footer>
             </div>
         </div>

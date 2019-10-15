@@ -1,10 +1,21 @@
 /** @type HTMLElement */
 export let scannerModal = null;
+export let scannerResultModal = null;
 export let zxingCodeReader = null;
 
 let scannedBarcodes = [];
 
 function launchScan() {
+    const scanSuccess = (result) => {
+        if (scannedBarcodes.some(c => c.code === result.text) === false) {
+            console.log(result);
+            scannedBarcodes.push({
+                code: result.text,
+                date: Date.now()
+            });
+        }
+    }
+
     zxingCodeReader
         .listVideoInputDevices()
         .then(videoInputDevices => {
@@ -12,20 +23,16 @@ function launchScan() {
                 alert('No camera detected - This game requires a video input to play :-(');
             } else {
                 zxingCodeReader
-                    .decodeOnceFromVideoDevice(undefined, 'video')
-                    .then(result => {
-                        console.log(result.text);
-                        scannedBarcodes.push({
-                            code: result.text,
-                            date: Date.now()
-                        });
-                        launchScan();
-                    })
-                    .catch(err => console.error(err));
+                    .decodeFromInputVideoDeviceContinuously(undefined, 'video', (result, err) => {
+                        if (result) {
+                            scanSuccess(result);
+                        }
+                    });
             }
         })
         .catch(err => console.error(err));
 }
+
 export function openScannerModal() {
     if (scannerModal) {
         return;
@@ -46,13 +53,11 @@ export function closeScannerModal() {
 
     scannerModal.parentNode.removeChild(scannerModal);
     scannerModal = null;
+    zxingCodeReader.stopContinuousDecode();
 
-    if (scannedBarcodes.length > 0) {
-        alert(`Barcode scanned:\n${scannedBarcodes.map(code => code.code).join('\n')}`);
-
-        scannedBarcodes.length = 0;
-    }
+    openScannerResultModal();
 }
+
 export function checkForVideoInput() {
     zxingCodeReader = new ZXing.BrowserBarcodeReader();
 
@@ -66,3 +71,36 @@ export function checkForVideoInput() {
       .catch(err => console.error(err));
 }
 
+export function openScannerResultModal() {
+    if (scannerResultModal || scannedBarcodes.length === 0) {
+        return;
+    }
+
+    var template = document.querySelector('#scanner-result-modal');
+
+    scannerResultModal = document.importNode(template.content, true).children[0];
+    document.body.appendChild(scannerResultModal);
+    scannerResultModal.classList.add('is-active');
+
+    var singleBarcode = scannerResultModal.children[1].children[1].children[0];
+    var barcodeContainer = singleBarcode.parentNode; 
+    singleBarcode.parentNode.removeChild(singleBarcode);
+
+    scannedBarcodes.forEach(scannedCode => {
+        let barcodeElementInstance = document.importNode(singleBarcode, true);
+
+        barcodeElementInstance.children[1].innerText = scannedCode.code;
+
+        barcodeContainer.appendChild(barcodeElementInstance);
+    });
+}
+export function closeScannerResultModal() {
+    if (!scannerResultModal) {
+        return;
+    }
+
+    scannerResultModal.parentNode.removeChild(scannerResultModal);
+    scannerResultModal = null;
+
+    scannedBarcodes = [];
+}
