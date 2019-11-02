@@ -1,0 +1,46 @@
+html {
+    overflow: hidden;
+}
+
+.home-page .grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    gap: 5vw;
+
+    width: 90vw;
+    height: 90vw;
+    margin: 2.5vw;
+}
+
+.home-page .grid > .grid-icon {
+    width: 100%;
+    height: 100%;
+
+    justify-self: center;
+    align-self: center;
+}
+
+.grid-icon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 10%;
+    background-color: #33443355;
+}
+
+.grid-icon > [data-prefix="fas"] {
+    flex-grow: 1;
+    align-self: center;
+    justify-self: center;
+}
+
+.grid-icon > span {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    font-size: 6vw;
+    text-transform: uppercase;
+}

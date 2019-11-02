@@ -38,10 +38,7 @@ export function openScannerModal() {
         return;
     }
 
-    var template = document.querySelector('#scanner-modal');
-
-    scannerModal = document.importNode(template.content, true).children[0];
-    document.body.appendChild(scannerModal);
+    scannerModal = instantiateTemplate('scanner-modal', document.body);
     scannerModal.classList.add('is-active');
 
     launchScan();
