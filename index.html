@@ -23,44 +23,5 @@
             <button onclick="openScannerModal()">Open scanner</button>
         </div>
     </section>
-
-    <template id="scanner-modal">
-        <div class="modal">
-            <div class="modal-background"></div>
-            <div class="modal-card">
-                <section class="modal-card-body" style="padding: 0;">
-                    <video
-                        id="video"
-                        width="1280"
-                        height="960"
-                        style="border: 1px solid gray"
-                        ></video>
-                </section>
-                <footer class="modal-card-foot" style="justify-content: center;">
-                    <button class="button is-success" onclick="closeScannerModal()">Close</button>
-                </footer>
-            </div>
-        </div>
-    </template>
-    
-    <template id="scanner-result-modal">
-        <div class="modal">
-            <div class="modal-background"></div>
-            <div class="modal-card">
-                <header class="modal-card-head">Results</header>
-                <section class="modal-card-body">
-                    <div class="tags has-addons" style="margin-bottom: 0;">
-                        <span class="tag is-dark">
-                            <i class="fas fa-align-justify" style="transform: rotate(90deg);"></i>
-                        </span>
-                        <span class="tag">8 001250 180414</span>
-                    </div>
-                </section>
-                <footer class="modal-card-foot" style="justify-content: center;">
-                    <button class="button is-success" onclick="closeScannerResultModal()">Close</button>
-                </footer>
-            </div>
-        </div>
-    </template>
 </body>
 </html>
