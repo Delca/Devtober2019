@@ -5,7 +5,7 @@ if ('serviceWorker' in navigator) {
 var importFilenames = [
     '/Devtober2019/js/scannerModal.js',
     '/Devtober2019/js/data.js',
-    '/Devtober2019/js/scannerModal.js',
+    '/Devtober2019/js/navigation.js',
 ];
 var index = 0;
 
@@ -23,6 +23,15 @@ function importFile(callback) {
     });
 }
 
+function clamp(a, b, c) {
+    return (Math.min(Math.max(a, b), c));
+}
+
+/**
+ * @param {string} templateID 
+ * @param {HTMLElement} parent
+ * @returns {HTMLElement} 
+ */
 function instantiateTemplate(templateID, parent = document.body) {
     var template = document.querySelector(`#${templateID}`);
 
@@ -90,5 +99,5 @@ window.addEventListener('load', async () => {
         resolve = r;
     });
 
-    instantiateTemplate('home-page', document.body);
+    navigationController.openPage('home-page');
 });

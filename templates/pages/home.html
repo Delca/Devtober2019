@@ -3,19 +3,19 @@
         <template id="home-page">
             <div class="home-page">
                 <div class="grid">
-                    <div class="grid-icon">
+                    <div class="grid-icon" onclick="navigationController.openPage('home-page', { fromRight: false })">
                         <i class="fas fa-align-justify" style="width: 50%; transform: rotate(90deg);"></i>
                         <span>State</span>
                     </div>
-                    <div class="grid-icon">
+                    <div class="grid-icon" onclick="navigationController.openPage('home-page', { fromRight: true })">
                         <i class="fas fa-store" style="width: 55%;"></i>
                         <span>Store</span>
                     </div>
-                    <div class="grid-icon">
+                    <div class="grid-icon" onclick="navigationController.openPage('home-page', { fromRight: false })">
                         <i class="fas fa-list" style="width: 50%;"></i>
                         <span>Collection</span>
                     </div>
-                    <div class="grid-icon">
+                    <div class="grid-icon" onclick="navigationController.openPage('home-page', { fromRight: true })">
                         <i class="fas fa-info-circle" style="width: 50%;"></i>
                         <span>Help</span>
                     </div>

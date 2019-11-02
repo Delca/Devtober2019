@@ -2,6 +2,20 @@ html {
     overflow: hidden;
 }
 
+body {
+    position: relative;
+}
+body * {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+body > * {
+    position: absolute;
+    top: 0;
+}
+
 .home-page .grid {
     display: grid;
     grid-template-columns: 50% 50%;
