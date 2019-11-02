@@ -13,23 +13,32 @@ class NavigationController {
 
         options = Object.assign({}, {
             fromRight: true,
-            duration: .35,
-            easing: (t) => ((--t)*t*t+1),
+            duration: .3,
+            easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
         }, options);
 
         let oldPage = this.currentPage || { style: {} };
         let newPage = instantiateTemplate(templateId, this.rootElement);
-        
+
+        newPage.style.marginLeft = `${(options.fromRight ? 100 : -100)}%`;
+        newPage.style.transition = `margin-left ${options.duration}s ${options.easing}`;
+        oldPage.style.marginLeft = '0%';
+
         let startTime = Date.now();
         let resolve = null;
 
+        let cycleCount = 0;
         let animate = () => {
             let now = Date.now();
-            let progress = options.easing(clamp(0, ((now - startTime) / (options.duration * 1000)), 1));
+            let progress = clamp(0, ((now - startTime) / (options.duration * 1000)), 1);
             let done = (progress >= 1);
         
-            oldPage.style.marginLeft = `${(options.fromRight ? -1 : 1) * (100 * progress)}%`;
-            newPage.style.marginLeft = `${(options.fromRight ? 1 : -1) * (100 * (1 - progress))}%`;
+            // Since the new page just got instantiated in the same frame,
+            // we have to wait to trigger the transition
+            if (++cycleCount === 2) {
+                oldPage.style.marginLeft = `${(options.fromRight ? -100 : 100)}%`;
+                newPage.style.marginLeft = '0%';
+            }
 
             if (done === false) {
                 requestAnimationFrame(animate);
