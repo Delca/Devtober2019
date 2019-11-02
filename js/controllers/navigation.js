@@ -15,10 +15,11 @@ class NavigationController {
             fromRight: true,
             duration: .3,
             easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
+            controller: null
         }, options);
 
         let oldPage = this.currentPage || { style: {} };
-        let newPage = instantiateTemplate(templateId, this.rootElement);
+        let newPage = instantiateTemplate(templateId, this.rootElement, options.controller);
 
         newPage.style.marginLeft = `${(options.fromRight ? 100 : -100)}%`;
         newPage.style.transition = `margin-left ${options.duration}s ${options.easing}`;

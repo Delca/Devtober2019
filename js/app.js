@@ -2,10 +2,21 @@ if ('serviceWorker' in navigator) {
    navigator.serviceWorker.register('/Devtober2019/js/mainSW.js');
 }
 
+var templatesToLoad = [
+    'scannerModal',
+    'scannerResultModal',
+
+    'pages/home',
+    'pages/state',
+
+    'components/objective',
+];
 var importFilenames = [
     '/Devtober2019/js/scannerModal.js',
     '/Devtober2019/js/data.js',
-    '/Devtober2019/js/navigation.js',
+    '/Devtober2019/js/controllers/navigation.js',
+    '/Devtober2019/js/controllers/pages/state.js',
+    '/Devtober2019/js/controllers/components/objective.js',
 ];
 var index = 0;
 
@@ -32,7 +43,7 @@ function clamp(a, b, c) {
  * @param {HTMLElement} parent
  * @returns {HTMLElement} 
  */
-function instantiateTemplate(templateID, parent = document.body) {
+function instantiateTemplate(templateID, parent = document.body, controller = null) {
     var template = document.querySelector(`#${templateID}`);
 
     if (!template) {
@@ -42,6 +53,15 @@ function instantiateTemplate(templateID, parent = document.body) {
 
     var instance = document.importNode(template.content, true).children[0];
     parent.appendChild(instance);
+
+    let controllerName = instance.getAttribute('data-controller');
+    if (controllerName && window[controllerName] && window[controllerName].initialize) {
+        controller = window[controllerName];
+    }
+
+    if (controller) {
+        controller.initialize(instance);
+    }
 
     return instance;
 }
@@ -57,12 +77,6 @@ window.addEventListener('load', async () => {
         checkForVideoInput();
     }
 
-    var templatesToLoad = [
-        'scannerModal',
-        'scannerResultModal',
-
-        'pages/home',
-    ];
     var parser = new DOMParser();
     var processed = 0;
     var resolve = () => {console.error('RESOLVE UNSET !');};
@@ -99,5 +113,5 @@ window.addEventListener('load', async () => {
         resolve = r;
     });
 
-    navigationController.openPage('home-page');
+    navigationController.openPage('state-page');
 });
