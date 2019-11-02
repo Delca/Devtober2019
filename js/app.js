@@ -1,9 +1,11 @@
 if ('serviceWorker' in navigator) {
-   navigator.serviceWorker.register('/Devtober2019/mainSW.js');
+   navigator.serviceWorker.register('/Devtober2019/js/mainSW.js');
 }
 
 var importFilenames = [
-    '/Devtober2019/js/scannerModal.js'
+    '/Devtober2019/js/scannerModal.js',
+    '/Devtober2019/js/data.js',
+    '/Devtober2019/js/scannerModal.js',
 ];
 var index = 0;
 

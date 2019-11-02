@@ -1,4 +1,4 @@
-self.importScripts('/Devtober2019/data.js');
+self.importScripts('/Devtober2019/js/data.js');
 
 console.log('[SW] Done loading data', companies.electronics);
 
@@ -7,9 +7,9 @@ var appFiles = [
     '/Devtober2019/',
     '/Devtober2019/index.html',
     '/Devtober2019/pwaTest.webmanifest',
-    '/Devtober2019/app.js',
-    '/Devtober2019/data.js',
-    '/Devtober2019/mainSW.js',
+    '/Devtober2019/js/app.js',
+    '/Devtober2019/js/data.js',
+    '/Devtober2019/js/mainSW.js',
 ];
 
 // Register a handler for the service worker installation hook
