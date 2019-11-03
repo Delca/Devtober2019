@@ -15,7 +15,8 @@ class StatePageController {
         this.tabContentElement = element.querySelector('.tab-content-panel');
         this.objectiveTabElement = element.querySelector('.tab-content-panel > .objective-tab');
         this.stickTabElement = element.querySelector('.tab-content-panel > .stick-tab');
-        this.stickGridElement = element.querySelector('.tab-content-panel > .stick-tab > .stick-grid');
+        this.stickGridElement = instantiateTemplate('stick-panel-component', this.stickGridElement, new StickPanelController());
+        this.stickTabElement.insertBefore(this.stickGridElement, this.stickTabElement.firstChild);
         this.inventoryGridElement = element.querySelector('.tab-content-panel > .stick-tab > .inventory-grid');
         this.breakButton = element.querySelector('.break-button');
 
@@ -74,17 +75,6 @@ class StatePageController {
                 goal: 3,
             }
         ];
-
-        // ---- //
-
-        this.sticksData = {};
-
-        for (let i = 0; i < 10; ++i) {
-            this.sticksData[i] = {
-                stick: i,
-                quantity: ((13 * i) % 10)
-            };
-        }
         
         // ---- //
 
@@ -204,16 +194,6 @@ class StatePageController {
         this.stickTabElement.style.display = 'grid';
         this.objectiveTabHeaderElement.classList = '';
         this.stickTabHeaderElement.classList = 'is-active';
-
-        while (this.stickGridElement.firstChild) {
-            this.stickGridElement.removeChild(this.stickGridElement.firstChild);
-        }
-
-        for (let i = 0; i < 10; ++i) {
-            let stick = this.sticksData[i];
-
-            instantiateTemplate('stick-component', this.stickGridElement, new StickController(stick));
-        }
 
         let categoryContents = Object.getOwnPropertyNames(this.inventory)
             .map(productCode => this.inventory[productCode])

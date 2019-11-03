@@ -150,18 +150,11 @@ body > * {
 }
 
 .state-page .stick-tab .stick-grid {
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
-    grid-template-rows: 50% 50%;
-    gap: 20% 0;
-    justify-items: center;
-
     width: 100%;
     padding: 2.5% 5% 5% 5%;
 
     border-bottom: 1px solid rgba(10, 10, 10, .1);
 }
-
 .state-page .inventory-grid {
     display: grid;
     grid-template-columns: 100%;
@@ -323,4 +316,12 @@ span.stick-type {
     text-align: center;
 }
 
+/* ---- */
 
+.stick-grid {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 50% 50%;
+    gap: 20% 0;
+    justify-items: center;
+}

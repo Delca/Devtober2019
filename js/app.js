@@ -12,6 +12,7 @@ var templatesToLoad = [
 
     'components/objective',
     'components/stick',
+    'components/stickPanel',
     'components/inventoryCategorySelector',
     'components/inventoryCollectionDisplay',
 ];
@@ -23,6 +24,7 @@ var importFilenames = [
     '/Devtober2019/js/controllers/pages/collection.js',
     '/Devtober2019/js/controllers/components/objective.js',
     '/Devtober2019/js/controllers/components/stick.js',
+    '/Devtober2019/js/controllers/components/stickPanel.js',
     '/Devtober2019/js/controllers/components/inventoryCategorySelector.js',
     '/Devtober2019/js/controllers/components/inventoryCollectionDisplay.js',
 ];
