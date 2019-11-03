@@ -5,8 +5,8 @@
                 <div class="tabs is-centered" style="width: 100%">
                     <ul>
                       <li onclick="navigationController.openPage('home-page', { fromRight: false })"><a>Home</a></li>
-                      <li class="is-active"><a>Current list</a></li>
-                      <li><a>Sticks</a></li>
+                      <li onclick="statePageController.displayListData();"><a>Current list</a></li>
+                      <li onclick="statePageController.displayStickData();"><a>Sticks</a></li>
                     </ul>
                 </div>
                 <div class="tab-content-panel">

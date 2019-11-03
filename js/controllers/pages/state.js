@@ -10,6 +10,8 @@ class StatePageController {
     initialize(element) {
         this.element = element;
         this.tabsElement = element.querySelector('.tabs');
+        this.objectiveTabHeaderElement = this.tabsElement.children[0].children[1];
+        this.stickTabHeaderElement = this.tabsElement.children[0].children[2];
         this.tabContentElement = element.querySelector('.tab-content-panel');
         this.objectiveTabElement = element.querySelector('.tab-content-panel > .objective-tab');
         this.stickTabElement = element.querySelector('.tab-content-panel > .stick-tab');
@@ -18,7 +20,7 @@ class StatePageController {
         this.breakButton = element.querySelector('.break-button');
 
         this.loadDataFromMemory();
-        this.displayStickData();
+        this.displayListData();
     }
 
     loadDataFromMemory() {
@@ -184,6 +186,12 @@ class StatePageController {
     displayListData() {
         this.stickTabElement.style.display = 'none';
         this.objectiveTabElement.style.display = 'grid';
+        this.objectiveTabHeaderElement.classList = 'is-active';
+        this.stickTabHeaderElement.classList = '';
+
+        while (this.objectiveTabElement.firstChild) {
+            this.objectiveTabElement.removeChild(this.objectiveTabElement.firstChild);
+        }
 
         this.listData.forEach((objective, i) => {
             instantiateTemplate('objective-component', this.objectiveTabElement, new ObjectiveController(objective))
@@ -194,6 +202,12 @@ class StatePageController {
     displayStickData() {
         this.objectiveTabElement.style.display = 'none';
         this.stickTabElement.style.display = 'grid';
+        this.objectiveTabHeaderElement.classList = '';
+        this.stickTabHeaderElement.classList = 'is-active';
+
+        while (this.stickGridElement.firstChild) {
+            this.stickGridElement.removeChild(this.stickGridElement.firstChild);
+        }
 
         for (let i = 0; i < 10; ++i) {
             let stick = this.sticksData[i];
@@ -213,6 +227,10 @@ class StatePageController {
 
                 return acc;
             }, {});
+
+        while (this.inventoryGridElement.firstChild) {
+            this.inventoryGridElement.removeChild(this.inventoryGridElement.firstChild);
+        }
 
         Object.getOwnPropertyNames(categoryContents).forEach(type => {
             let categoryData = {
