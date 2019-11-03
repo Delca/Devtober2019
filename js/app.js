@@ -10,6 +10,8 @@ var templatesToLoad = [
     'pages/state',
 
     'components/objective',
+    'components/stick',
+    'components/inventoryCategorySelector',
 ];
 var importFilenames = [
     '/Devtober2019/js/scannerModal.js',
@@ -17,6 +19,8 @@ var importFilenames = [
     '/Devtober2019/js/controllers/navigation.js',
     '/Devtober2019/js/controllers/pages/state.js',
     '/Devtober2019/js/controllers/components/objective.js',
+    '/Devtober2019/js/controllers/components/stick.js',
+    '/Devtober2019/js/controllers/components/inventoryCategorySelector.js',
 ];
 var index = 0;
 

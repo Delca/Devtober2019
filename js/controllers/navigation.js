@@ -1,4 +1,4 @@
-class NavigationController {
+export class NavigationController {
     constructor(rootElement) {
         this.rootElement = rootElement;
         this.currentPage = null;
@@ -36,7 +36,8 @@ class NavigationController {
         
             // Since the new page just got instantiated in the same frame,
             // we have to wait to trigger the transition
-            if (++cycleCount === 2) {
+            // One cycle seems to fail sometimes, so we wait two more just in case
+            if (++cycleCount === 4) {
                 oldPage.style.marginLeft = `${(options.fromRight ? -100 : 100)}%`;
                 newPage.style.marginLeft = '0%';
             }

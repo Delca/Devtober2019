@@ -4,16 +4,21 @@
             <div class="state-page" data-controller="statePageController">
                 <div class="tabs is-centered" style="width: 100%">
                     <ul>
+                      <li onclick="navigationController.openPage('home-page', { fromRight: false })"><a>Home</a></li>
                       <li class="is-active"><a>Current list</a></li>
                       <li><a>Sticks</a></li>
                     </ul>
                 </div>
                 <div class="tab-content-panel">
-                    <div class="objective-list">
+                    <div class="objective-tab">
     
                     </div>
-                    <div class="stick-list">
-                        
+                    <div class="stick-tab">
+                        <div class="stick-grid"></div>
+                        <div class="inventory-grid"></div>
+                        <div class="break-button-panel">
+                            <a class="break-button">BREAK</a>
+                        </div>
                     </div>
                 </div>
             </div>

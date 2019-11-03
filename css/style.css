@@ -85,7 +85,7 @@ body > * {
     margin-bottom: 0;
 }
 
-.state-page .objective-list {
+.state-page .objective-tab {
     display: grid;
     grid-template-columns: 100%;
     gap: 20px;
@@ -93,16 +93,16 @@ body > * {
     overflow-y: scroll;
 }
 
-/* Adds a bit of space before the frist object and after the last one */
-.state-page .objective-list::before,
-.state-page .objective-list::after {
+/* Adds a bit of space before the first object and after the last one */
+.state-page .objective-tab::before,
+.state-page .objective-tab::after {
     content: '.';
     color: #00000000;
     font-size: 5%;
     height: 5%;
 }
 
-.state-page .objective-list > * {
+.state-page .objective-tab > * {
     width: 90%;
     margin-left: 5%;
 }
@@ -128,9 +128,6 @@ body > * {
 .state-page .card-header-icon:first-child {
     border-radius: 0 0 0 15px;
     font-size: 1.7em;
-    color: rgb(255, 255, 255, 0.75);
-    background-color: rgb(203, 31, 28);
-    box-shadow: 0 1px 0px rgba(255,10,10,1),0 0 0 1px rgba(255,10,10,1);
 }
 
 .state-page .card-header-icon:last-child {
@@ -141,4 +138,135 @@ body > * {
 .state-page .card-header > *:not(:first-child) {
     box-shadow: 0 1px 2px rgba(10,10,10,.1);
     background: rgba(0, 0, 0, .025);
+}
+
+.state-page .stick-tab {
+    display: grid;
+    grid-template-rows: 72px auto 50px;
+}
+
+.state-page .stick-tab .stick-grid {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 50% 50%;
+    gap: 20% 0;
+    justify-items: center;
+
+    width: 100%;
+    padding: 2.5% 5% 5% 5%;
+
+    border-bottom: 1px solid rgba(10, 10, 10, .1);
+}
+
+.state-page .inventory-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 20px;
+
+    overflow-y: scroll;
+}
+.state-page .inventory-grid > * {
+    width: 90%;
+    margin-left: 5%;
+}
+/* Adds a bit of space before the first object and after the last one */
+.state-page .inventory-grid::before,
+.state-page .inventory-grid::after {
+    content: '.';
+    color: #00000000;
+    font-size: 5%;
+    height: 5%;
+}
+
+.state-page .inventory-category-selector-component .card {
+    border-radius: 15px 15px 15px 15px;
+    overflow: hidden;
+}
+.state-page .inventory-category-selector-component .card-header {
+    box-shadow: none;
+}
+.state-page .inventory-category-selector-component .card-content {
+    transition: max-height .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    padding: 0;
+    overflow-y: hidden;
+}
+.state-page .inventory-category-selector-component .card-content .content {
+    display: grid;
+    grid-template-columns: auto 64px 48px;
+    gap: 0 5px;
+    
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+}
+.state-page .inventory-category-selector-component .card-content .content > .align-center {
+    text-align: center;
+}
+
+.state-page .break-button-panel {
+    text-align: center;
+    border-top: 1px solid rgba(10, 10, 10, .1);
+}
+.state-page .break-button {
+    pointer-events: none;
+    color: rgb(255, 255, 255, 0.9);
+    background-color: rgb(173, 173, 173);
+
+    border-radius: 15px;
+    padding: 0 10%;
+    font-size: 32px;
+
+    transition: color linear .3s, background-color linear .3s;
+}
+.state-page .break-button.enabled {
+    pointer-events: all;
+    color: rgb(255, 255, 255, 0.9);
+    background-color: rgb(23, 15, 156);
+}
+
+/* ---- */
+
+span.stick-type {
+    font-weight: bold;
+}
+
+/* ---- */
+
+.horizontal-line {
+    width: 100%;
+    border-bottom: 1px solid rgba(10, 10, 10, .1);
+}
+
+/* ---- */
+
+.category-icon {
+    color: rgb(10, 10, 10, 0.45);
+    background-color: rgb(172, 172, 172);
+
+    transition: color linear .3s, background-color linear .3s;
+}
+
+.category-icon.type-0 {
+    color: rgb(255, 255, 255, 0.80);
+    background-color: rgb(209, 182, 26);
+}
+
+.category-icon.type-1 {
+    color: rgb(255, 255, 255, 0.80);
+    background-color: rgb(203, 31, 28);
+}
+
+.category-icon.type-2 {
+    color: rgb(255, 255, 255, 0.80);
+    background-color: rgb(31, 198, 78);
+}
+
+.category-icon.type-3 {
+    color: rgb(255, 255, 255, 0.80);
+    background-color: rgb(52, 63, 4);
+}
+
+.category-icon.type-4 {
+    color: rgb(255, 255, 255, 0.80);
+    background-color: rgb(24, 126, 209);
 }
