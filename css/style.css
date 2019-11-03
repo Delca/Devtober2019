@@ -151,7 +151,6 @@ body > * {
 
 .state-page .stick-tab .stick-grid {
     width: 100%;
-    padding: 2.5% 5% 5% 5%;
 
     border-bottom: 1px solid rgba(10, 10, 10, .1);
 }
@@ -237,34 +236,34 @@ span.stick-type {
 
 /* ---- */
 
-.category-icon {
+.icon-category {
     color: rgb(10, 10, 10, 0.45);
     background-color: rgb(172, 172, 172);
 
     transition: color linear .3s, background-color linear .3s;
 }
 
-.category-icon.type-0 {
+.icon-category.type-0 {
     color: rgb(255, 255, 255, 0.80);
     background-color: rgb(209, 182, 26);
 }
 
-.category-icon.type-1 {
+.icon-category.type-1 {
     color: rgb(255, 255, 255, 0.80);
     background-color: rgb(203, 31, 28);
 }
 
-.category-icon.type-2 {
+.icon-category.type-2 {
     color: rgb(255, 255, 255, 0.80);
     background-color: rgb(31, 198, 78);
 }
 
-.category-icon.type-3 {
+.icon-category.type-3 {
     color: rgb(255, 255, 255, 0.80);
     background-color: rgb(52, 63, 4);
 }
 
-.category-icon.type-4 {
+.icon-category.type-4 {
     color: rgb(255, 255, 255, 0.80);
     background-color: rgb(24, 126, 209);
 }
@@ -305,6 +304,11 @@ span.stick-type {
     transition: max-height .4s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.inventory-collection-display-component .card .card-header .icon-category {
+    font-size: 1.7em;
+    transition: none;
+}
+
 .inventory-collection-display-component .card-content .content {
     display: grid;
     grid-template-columns: 45% 45% 10%;
@@ -324,4 +328,93 @@ span.stick-type {
     grid-template-rows: 50% 50%;
     gap: 20% 0;
     justify-items: center;
+
+    padding: 2.5% 5% 5% 5%;
+}
+
+/* ---- */
+
+.details-modal-component .card,
+.details-modal-component .card-header {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.details-modal-component .card {
+    width: 90%;
+}
+
+.details-modal-component .card .card-header .icon-category {
+    font-size: 1.7em;
+    transition: none;
+}
+
+.details-modal-component .icon-close {
+    font-size: 1.7em;
+}
+
+.details-modal-component .tag-grid {
+    display: grid;
+    grid-template-columns: auto 40%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    gap: 1px 0;
+
+    height: 50%;
+}
+
+.details-modal-component .card-content {
+    height: 100%;
+    padding: 5% 0 0 0;
+}
+
+.details-modal-component .tag-grid {
+    padding: 0 5% 5% 5%;
+    border-bottom: 1px solid rgba(10, 10, 10, .1);
+}
+.details-modal-component .tag-grid .tags {
+    align-items: flex-start;
+}
+
+.details-modal-component .tag-grid .tags:nth-child(2n) {
+    justify-self: flex-end;
+}
+
+.details-modal-component .order-panel {
+    padding: 5px 5% 0 5%;
+}
+
+.details-modal-component .order-number-input {
+    display: inline-flex;
+}
+
+.details-modal-component .stick-grid {
+    padding: 2.5% 0 5% 0;
+}
+
+.details-modal-component .place-order-button-panel {
+    width: 100%;
+    text-align: right;
+}
+.details-modal-component .place-order-button {
+    pointer-events: none;
+    color: rgb(255, 255, 255, 0.9);
+    background-color: rgb(173, 173, 173);
+
+    font-size: 1.2em;
+    
+
+    border-radius: 5px;
+    padding: 2.5px 5%;
+
+    transition: color linear .3s, background-color linear .3s;
+}
+.details-modal-component .place-order-button.is-active {
+    pointer-events: all;
+    color: rgb(255, 255, 255, 0.9);
+    background-color: rgb(23, 15, 156);
+}
+
+.details-modal-component .order-panel-title {
+    font-size: 1.3em;
+    font-weight: bold;
 }

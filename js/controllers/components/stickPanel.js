@@ -1,34 +1,34 @@
 export class StickPanelController {
-    constructor() {
+    constructor(data = null) {
         this.element = null;
+        this.data = data;
     }
 
     initialize(element) {
         this.element = element;
         this.stickGridElement = element.querySelector('.stick-grid');
     
-        this.loadDataFromMemory();
+        if (this.data === null) {
+            this.loadDataFromMemory();
+        }
         this.updateDisplay();
     }
 
     loadDataFromMemory() {
-        this.sticksData = {};
-
-        for (let i = 0; i < 10; ++i) {
-            this.sticksData[i] = {
-                stick: i,
-                quantity: ((13 * i) % 10)
-            };
-        }
+        this.data = getStickInventory();
     }
 
-    updateDisplay() {
+    updateDisplay(data = null) {
+        if (data === null) {
+            data = this.data;
+        }
+
         while (this.stickGridElement.firstChild) {
             this.stickGridElement.removeChild(this.stickGridElement.firstChild);
         }
 
         for (let i = 0; i < 10; ++i) {
-            let stick = this.sticksData[i];
+            let stick = (typeof data[i] === 'object' ? data[i] : { stick: i, quantity: (data[i] || 0), isError: false });
 
             instantiateTemplate('stick-component', this.stickGridElement, new StickController(stick));
         }

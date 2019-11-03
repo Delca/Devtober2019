@@ -15,6 +15,7 @@ var templatesToLoad = [
     'components/stickPanel',
     'components/inventoryCategorySelector',
     'components/inventoryCollectionDisplay',
+    'components/detailsModal',
 ];
 var importFilenames = [
     '/Devtober2019/js/scannerModal.js',
@@ -27,6 +28,7 @@ var importFilenames = [
     '/Devtober2019/js/controllers/components/stickPanel.js',
     '/Devtober2019/js/controllers/components/inventoryCategorySelector.js',
     '/Devtober2019/js/controllers/components/inventoryCollectionDisplay.js',
+    '/Devtober2019/js/controllers/components/detailsModal.js',
 ];
 var index = 0;
 

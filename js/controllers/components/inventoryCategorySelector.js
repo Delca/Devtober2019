@@ -9,7 +9,7 @@ export class InventoryCategorySelectorController {
 
     initialize(element) {
         this.element = element;
-        this.categoryIcon = element.querySelector('.category-icon');
+        this.categoryIcon = element.querySelector('.icon-category');
         this.contentElement = element.querySelector('.card-content');
         this.titleElement = element.querySelector('.card-header-title');
         this.productGrid = element.querySelector('.product-grid');

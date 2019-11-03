@@ -78,99 +78,7 @@ class StatePageController {
         
         // ---- //
 
-        this.inventory = {
-            1956485675964: {
-                type: 0,
-                code: 1956485675964,
-                maker: {
-                    id: 56485,
-                    name: 'Dem makerZ'
-                },
-                product: {
-                    id: 67596,
-                    name: 'Dat produK'
-                },
-                quantity: 3,
-            },
-            7658456521325: {
-                type: 1,
-                code: 7658456521325,
-                maker: {
-                    id: 56485,
-                    name: 'Dem makerZ'
-                },
-                product: {
-                    id: 67596,
-                    name: 'Dat produK'
-                },
-                quantity: 3,
-            },
-            3645212568945: {
-                type: 2,
-                code: 3645212568945,
-                maker: {
-                    id: 56485,
-                    name: 'Dem makerZ'
-                },
-                product: {
-                    id: 67596,
-                    name: 'Dat produK'
-                },
-                quantity: 3,
-            },
-            6495127835642: {
-                type: 3,
-                code: 6495127835642,
-                maker: {
-                    id: 56485,
-                    name: 'Dem makerZ'
-                },
-                product: {
-                    id: 67596,
-                    name: 'Dat produK'
-                },
-                quantity: 3,
-            },
-            46372158649524: {
-                type: 4,
-                code: 46372158649524,
-                maker: {
-                    id: 56485,
-                    name: 'Dem makerZ'
-                },
-                product: {
-                    id: 67596,
-                    name: 'Dat produK'
-                },
-                quantity: 3,
-            },
-            7546852315246: {
-                type: 1,
-                code: 7546852315246,
-                maker: {
-                    id: 56485,
-                    name: 'Dem makerZ'
-                },
-                product: {
-                    id: 67596,
-                    name: 'Dat produK'
-                },
-                quantity: 1,
-            },
-            5621345215236: {
-                type: 1,
-                code: 5621345215236,
-                maker: {
-                    id: 56485,
-                    name: 'Dem makerZ'
-                },
-                product: {
-                    id: 67596,
-                    name: 'Dat produK'
-                },
-                quantity: 8,
-            },
-        };
+        this.inventory = getInventory();
     }
 
     displayListData() {
@@ -185,7 +93,7 @@ class StatePageController {
 
         this.listData.forEach((objective, i) => {
             instantiateTemplate('objective-component', this.objectiveTabElement, new ObjectiveController(objective))
-            .querySelector('.category-icon').classList += ' type-' + (i % 5);
+            .querySelector('.icon-category').classList += ' type-' + (i % 5);
         });
     }
 

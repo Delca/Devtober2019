@@ -11,5 +11,6 @@ export class StickController {
     
         this.stickTypeElement.innerText = this.data.stick;
         this.stickQuantityElement.innerText = this.data.quantity;
+        this.stickQuantityElement.classList += (this.data.isError ? ' is-danger' : '');
     }
 }

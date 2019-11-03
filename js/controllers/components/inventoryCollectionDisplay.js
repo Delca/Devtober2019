@@ -9,7 +9,7 @@ export class InventoryCollectionDisplayController {
 
     initialize(element) {
         this.element = element;
-        this.categoryIcon = element.querySelector('.category-icon');
+        this.categoryIcon = element.querySelector('.icon-category');
         this.contentElement = element.querySelector('.card-content');
         this.titleElement = element.querySelector('.card-header-title');
         this.productGrid = element.querySelector('.product-grid');
@@ -22,7 +22,7 @@ export class InventoryCollectionDisplayController {
 
         // Retrieve the correct height to animate the dropdown 
         this.maxContentHeight = this.contentElement.clientHeight;
-        this.contentElement.style.maxHeight = '0px';
+        //this.contentElement.style.maxHeight = '0px';
     }
 
     updateSelection(quantity = 0) {
@@ -42,7 +42,7 @@ export class InventoryCollectionDisplayController {
 
             detailsIcon.appendChild(document.createElement('i'));
             detailsIcon.children[0].classList = 'fas fa-search';
-            detailsIcon.addEventListener('click', _ => console.log('Clicked', productSelection));
+            detailsIcon.addEventListener('click', _ => DetailsModalController.open(productSelection.product));
             detailsIconPanelElement.classList = 'align-center';
             detailsIconPanelElement.appendChild(detailsIcon);
 
