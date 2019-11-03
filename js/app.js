@@ -8,19 +8,23 @@ var templatesToLoad = [
 
     'pages/home',
     'pages/state',
+    'pages/collection',
 
     'components/objective',
     'components/stick',
     'components/inventoryCategorySelector',
+    'components/inventoryCollectionDisplay',
 ];
 var importFilenames = [
     '/Devtober2019/js/scannerModal.js',
     '/Devtober2019/js/data.js',
     '/Devtober2019/js/controllers/navigation.js',
     '/Devtober2019/js/controllers/pages/state.js',
+    '/Devtober2019/js/controllers/pages/collection.js',
     '/Devtober2019/js/controllers/components/objective.js',
     '/Devtober2019/js/controllers/components/stick.js',
     '/Devtober2019/js/controllers/components/inventoryCategorySelector.js',
+    '/Devtober2019/js/controllers/components/inventoryCollectionDisplay.js',
 ];
 var index = 0;
 
@@ -117,5 +121,5 @@ window.addEventListener('load', async () => {
         resolve = r;
     });
 
-    navigationController.openPage('state-page');
+    navigationController.openPage('collection-page');
 });

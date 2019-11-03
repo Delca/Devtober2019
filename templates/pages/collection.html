@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <template id="collection-page">
+            <div class="collection-page" data-controller="collectionPageController">
+                <div class="tabs is-centered" style="width: 100%">
+                    <ul>
+                        <li onclick="navigationController.openPage('home-page', { fromRight: false })"><a>Home</a></li>
+                        <li onclick="collectionPageController.displayByCategory()"><a>By category</a></li>
+                        <li onclick="collectionPageController.displayByMaker()"><a>By maker</a></li>
+                    </ul>
+                </div>
+                <div class="collection-grid">
+
+                </div>
+            </div>
+        </template>        
+    </head>
+</html>

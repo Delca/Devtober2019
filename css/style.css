@@ -69,26 +69,30 @@ body > * {
 
 /* ---- */
 
-.state-page .tab-content-panel, .tab-content-panel > * {
+.tab-content-panel, .tab-content-panel > * {
     height: 100%;
 }
 
-.state-page {
+.state-page,
+.collection-page {
     box-sizing: padding-box;
     -moz-box-sizing: padding-box;
     -webkit-box-sizing: padding-box;
     padding-top: 41px;
 }
 
-.state-page .tabs {
+.tabs {
     margin-top: -41px;
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }
+
+/* ---- */
 
 .state-page .objective-tab {
     display: grid;
     grid-template-columns: 100%;
     gap: 20px;
+    align-content: start;
 
     overflow-y: scroll;
 }
@@ -162,6 +166,7 @@ body > * {
     display: grid;
     grid-template-columns: 100%;
     gap: 20px;
+    align-content: start;
 
     overflow-y: scroll;
 }
@@ -270,3 +275,52 @@ span.stick-type {
     color: rgb(255, 255, 255, 0.80);
     background-color: rgb(24, 126, 209);
 }
+
+/* ---- */
+
+/* Adds a bit of space before the first object and after the last one */
+.collection-page .collection-grid::before,
+.collection-page .collection-grid::after {
+    content: '.';
+    color: #00000000;
+    font-size: 5%;
+    height: 5%;
+}
+
+.collection-page .collection-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 20px;
+    height: 100%;
+    align-content: start;
+
+    padding: 0 5%;
+    overflow-y: scroll;
+}
+
+/* ---- */
+
+.inventory-collection-display-component .card,
+.inventory-collection-display-component .card-header {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.inventory-collection-display-component .card-content {
+    padding: 0;
+
+    transition: max-height .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.inventory-collection-display-component .card-content .content {
+    display: grid;
+    grid-template-columns: 45% 45% 10%;
+    
+    padding: 5px 15px;
+}
+
+.inventory-collection-display-component .card-content .align-center {
+    text-align: center;
+}
+
+
