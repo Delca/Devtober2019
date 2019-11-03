@@ -14,7 +14,8 @@ export class NavigationController {
         options = Object.assign({}, {
             fromRight: true,
             duration: .3,
-            easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
+            easingIn: 'linear',//'cubic-bezier(0.215, 0.61, 0.355, 1)',
+            easingOut: 'linear',//'cubic-bezier(0.215, 0.61, 0.355, 1)',
             controller: null
         }, options);
 
@@ -22,8 +23,7 @@ export class NavigationController {
         let newPage = instantiateTemplate(templateId, this.rootElement, options.controller);
 
         newPage.style.marginLeft = `${(options.fromRight ? 100 : -100)}%`;
-        newPage.style.transition = `margin-left ${options.duration}s ${options.easing}`;
-        oldPage.style.marginLeft = '0%';
+        oldPage.style.transition = `margin-left ${options.duration}s ${options.easingIn}`;
 
         let startTime = Date.now();
         let resolve = null;
@@ -37,7 +37,8 @@ export class NavigationController {
             // Since the new page just got instantiated in the same frame,
             // we have to wait to trigger the transition
             // One cycle seems to fail sometimes, so we wait two more just in case
-            if (++cycleCount === 4) {
+            if (++cycleCount === 2) {
+                newPage.style.transition = `margin-left ${options.duration}s ${options.easingOut}`;
                 oldPage.style.marginLeft = `${(options.fromRight ? -100 : 100)}%`;
                 newPage.style.marginLeft = '0%';
             }
