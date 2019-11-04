@@ -29,6 +29,8 @@ var importFilenames = [
     '/Devtober2019/js/controllers/components/inventoryCategorySelector.js',
     '/Devtober2019/js/controllers/components/inventoryCollectionDisplay.js',
     '/Devtober2019/js/controllers/components/detailsModal.js',
+    '/Devtober2019/js/generation/rng.js',
+    '/Devtober2019/js/generation/objective.js',
 ];
 var index = 0;
 

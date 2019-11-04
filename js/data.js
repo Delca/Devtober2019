@@ -14,6 +14,33 @@ export const ProductTypeName = {
     4: 'Electronics',
 }
 
+export const ObjectiveType = {
+    Whatever: 0,    // any product will do
+    Category: 1,    // every product of the given category will do
+    Maker: 2,       // every product from the maker will do
+    Product: 3,     // every product with this denomination will do
+    Target: 4,      // only a specific maker/product combo will do
+};
+
+export const ObjectiveFlavourText = {
+    0: ['[0] Flavour text %0'],
+    1: ['[1] Flavour text %0'],
+    2: ['[2] Flavour text %0'],
+    3: ['[3] Flavour text %0'],
+    4: ['[4] Flavour text %0 %1'],
+};
+
+export const EntityCount = {
+    Maker: 128,
+    ProductType: {
+        0: 15,
+        1: 20,
+        2: 30,
+        3: 40,
+        4: 70,
+    }
+};
+
 var companies = {
     vegetables: ['Ol\'Joe Farm', 'Anoty cooperative', 'Nymia city fields'],
     meats: ['Butchery Rheto and sons', 'Gurgling Fisherman'],
@@ -196,7 +223,7 @@ function getSaveKey(category) {
     return `devtober2019-${category}`;
 }
 
-function getUserData(category) {
+export function getUserData(category) {
     return JSON.parse(localStorage.getItem(getSaveKey(category))) || {};
 }
 

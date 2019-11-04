@@ -1,7 +1,7 @@
 class StatePageController {
     constructor() {
         this.element = null;
-        this.listData = null;
+        this.objectiveData = null;
         this.sticksData = null;
 
         this.selectedAmount = 0;
@@ -25,56 +25,7 @@ class StatePageController {
     }
 
     loadDataFromMemory() {
-        this.listData = [
-            {
-                type: 4,
-                currentProgress: 2,
-                goal: 5,
-                param1: 1523,
-                param2: 0.52342,
-                param3: 'yellow',
-            },
-            {
-                type: 2,
-                currentProgress: 0,
-                goal: 2,
-            },
-            {
-                type: 1,
-                currentProgress: 3,
-                goal: 3,
-            },
-            {
-                type: 1,
-                currentProgress: 3,
-                goal: 3,
-            },
-            {
-                type: 1,
-                currentProgress: 3,
-                goal: 3,
-            },
-            {
-                type: 1,
-                currentProgress: 3,
-                goal: 3,
-            },
-            {
-                type: 1,
-                currentProgress: 3,
-                goal: 3,
-            },
-            {
-                type: 1,
-                currentProgress: 3,
-                goal: 3,
-            },
-            {
-                type: 1,
-                currentProgress: 3,
-                goal: 3,
-            }
-        ];
+        this.objectiveData = getObjectiveData();
         
         // ---- //
 
@@ -91,7 +42,7 @@ class StatePageController {
             this.objectiveTabElement.removeChild(this.objectiveTabElement.firstChild);
         }
 
-        this.listData.forEach((objective, i) => {
+        this.objectiveData.forEach((objective, i) => {
             instantiateTemplate('objective-component', this.objectiveTabElement, new ObjectiveController(objective))
             .querySelector('.icon-category').classList += ' type-' + (i % 5);
         });
