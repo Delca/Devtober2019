@@ -136,3 +136,83 @@ export function getStickInventory() {
 
     return data;
 }
+
+export function getObjectiveData() {
+    return [
+        {
+            type: 4,
+            currentProgress: 2,
+            goal: 5,
+            param1: 1523,
+            param2: 0.52342,
+            param3: 'yellow',
+        },
+        {
+            type: 2,
+            currentProgress: 0,
+            goal: 2,
+        },
+        {
+            type: 1,
+            currentProgress: 3,
+            goal: 3,
+        },
+        {
+            type: 1,
+            currentProgress: 3,
+            goal: 3,
+        },
+        {
+            type: 1,
+            currentProgress: 3,
+            goal: 3,
+        },
+        {
+            type: 1,
+            currentProgress: 3,
+            goal: 3,
+        },
+        {
+            type: 1,
+            currentProgress: 3,
+            goal: 3,
+        },
+        {
+            type: 1,
+            currentProgress: 3,
+            goal: 3,
+        },
+        {
+            type: 1,
+            currentProgress: 3,
+            goal: 3,
+        }
+    ];
+}
+
+// ---- //
+
+function getSaveKey(category) {
+    return `devtober2019-${category}`;
+}
+
+function getUserData(category) {
+    return JSON.parse(localStorage.getItem(getSaveKey(category))) || {};
+}
+
+function saveUserData(category, data) {
+    localStorage.setItem(getSaveKey(category), JSON.stringify(data));
+}
+
+export function manipulateUserData(category, handler = Function.prototype) {
+    let userData = getUserData(category);
+
+    try {
+        handler(userData);
+
+        saveUserData(category, userData);
+    }
+    catch (e) {
+        console.error(`Error while manipulatin ${category} save data, no change has been saved`);
+    }    
+}
