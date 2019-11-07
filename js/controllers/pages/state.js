@@ -6,7 +6,7 @@ class StatePageController {
 
         this.selectedAmount = 0;
     }
-    
+
     initialize(element) {
         this.element = element;
         this.tabsElement = element.querySelector('.tabs');
@@ -21,18 +21,18 @@ class StatePageController {
         this.breakButton = element.querySelector('.break-button');
 
         this.loadDataFromMemory();
-        this.displayListData();
+        this.displayObjectiveData();
     }
 
     loadDataFromMemory() {
         this.objectiveData = getObjectiveData();
-        
+
         // ---- //
 
-        this.inventory = getInventory();
+        this.inventory = getInventoryData();
     }
 
-    displayListData() {
+    displayObjectiveData() {
         this.stickTabElement.style.display = 'none';
         this.objectiveTabElement.style.display = 'grid';
         this.objectiveTabHeaderElement.classList = 'is-active';
@@ -42,7 +42,7 @@ class StatePageController {
             this.objectiveTabElement.removeChild(this.objectiveTabElement.firstChild);
         }
 
-        this.objectiveData.forEach((objective, i) => {
+        this.objectiveData.objectiveList.objectives.forEach((objective, i) => {
             instantiateTemplate('objective-component', this.objectiveTabElement, new ObjectiveController(objective))
             .querySelector('.icon-category').classList += ' type-' + (i % 5);
         });
@@ -54,8 +54,8 @@ class StatePageController {
         this.objectiveTabHeaderElement.classList = '';
         this.stickTabHeaderElement.classList = 'is-active';
 
-        let categoryContents = Object.getOwnPropertyNames(this.inventory)
-            .map(productCode => this.inventory[productCode])
+        let categoryContents = Object.getOwnPropertyNames(this.inventory.products)
+            .map(productCode => this.inventory.products[productCode])
             .reduce((acc, val) => {
                 acc[val.type] = acc[val.type] || [];
 
@@ -79,12 +79,12 @@ class StatePageController {
             }
 
             instantiateTemplate('inventory-category-selector-component', this.inventoryGridElement, new InventoryCategorySelectorController(categoryData));
-        });   
+        });
     }
 
     updateSelection(quantity = 0) {
         this.selectedAmount += quantity;
-        
+
         this.breakButton.classList = `break-button ${this.selectedAmount > 0 ? 'enabled' : ''}`;
     }
 }

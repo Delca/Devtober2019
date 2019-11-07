@@ -7,7 +7,7 @@ export class StickPanelController {
     initialize(element) {
         this.element = element;
         this.stickGridElement = element.querySelector('.stick-grid');
-    
+
         if (this.data === null) {
             this.loadDataFromMemory();
         }
@@ -15,7 +15,7 @@ export class StickPanelController {
     }
 
     loadDataFromMemory() {
-        this.data = getStickInventory();
+        this.data = getStickInventoryData();
     }
 
     updateDisplay(data = null) {

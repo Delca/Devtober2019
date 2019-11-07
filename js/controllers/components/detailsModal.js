@@ -31,7 +31,7 @@ export class DetailsModalController {
 
         this.updateProductInfo();
 
-        this.stickInventory = getStickInventory();
+        this.stickInventory = getStickInventoryData();
         this.updateCost();
     }
 
@@ -59,7 +59,7 @@ export class DetailsModalController {
         for (let i = 0; i < 10; ++i) {
             cost[i] = {
                 stick: i,
-                quantity: this.orderQuantity * (this.data.cost[i] || 0), 
+                quantity: this.orderQuantity * (this.data.cost[i] || 0),
             };
 
             cost[i].isError = (cost[i].quantity > this.stickInventory[i].quantity);

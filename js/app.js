@@ -41,7 +41,7 @@ function importFile(callback) {
 
     import(importFilenames[index]).then(module => {
         Object.assign(window, module);
-        
+
         console.log(`Imported ${importFilenames[index]}`);
         ++index;
         callback(importFile);
@@ -53,9 +53,9 @@ function clamp(a, b, c) {
 }
 
 /**
- * @param {string} templateID 
+ * @param {string} templateID
  * @param {HTMLElement} parent
- * @returns {HTMLElement} 
+ * @returns {HTMLElement}
  */
 function instantiateTemplate(templateID, parent = document.body, controller = null) {
     var template = document.querySelector(`#${templateID}`);
@@ -105,12 +105,12 @@ window.addEventListener('load', async () => {
         try {
             let response = await fetch(`templates/${templateName}.html`);
             let responseText = await response.text();
-            
+
             if (response.status < 200 || response.status > 299) {
                 console.error(`Could not load template ${templateName} [${response.status}]: ${responseText}`);
                 return;
             }
-    
+
             var template = parser.parseFromString(responseText, 'text/html').querySelector('head > template');
             document.body.appendChild(template);
             console.log(`Imported template ${templateName}`);
@@ -127,5 +127,5 @@ window.addEventListener('load', async () => {
         resolve = r;
     });
 
-    navigationController.openPage('collection-page');
+    navigationController.openPage('state-page');
 });

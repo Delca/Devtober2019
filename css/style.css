@@ -191,7 +191,7 @@ body > * {
     display: grid;
     grid-template-columns: auto 64px 48px;
     gap: 0 5px;
-    
+
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 15px;
@@ -312,7 +312,7 @@ span.stick-type {
 .inventory-collection-display-component .card-content .content {
     display: grid;
     grid-template-columns: 45% 45% 10%;
-    
+
     padding: 5px 15px;
 }
 
@@ -401,7 +401,7 @@ span.stick-type {
     background-color: rgb(173, 173, 173);
 
     font-size: 1.2em;
-    
+
 
     border-radius: 5px;
     padding: 2.5px 5%;
@@ -417,4 +417,36 @@ span.stick-type {
 .details-modal-component .order-panel-title {
     font-size: 1.3em;
     font-weight: bold;
+}
+
+/* ---- */
+
+.objective-component .product-grid {
+    display: grid;
+    grid-template-columns: auto 64px 48px;
+    gap: 0 5px;
+}
+.objective-component .product-grid > .align-center {
+    text-align: center;
+}
+
+.objective-component .submit-button-panel {
+    text-align: right;
+    padding-top: 10px;
+}
+.objective-component .submit-button {
+    pointer-events: none;
+    color: rgb(255, 255, 255, 0.9);
+    background-color: rgb(173, 173, 173);
+
+    border-radius: 15px;
+    padding: 0 10%;
+    font-size: 24px;
+
+    transition: color linear .3s, background-color linear .3s;
+}
+.objective-component .submit-button.enabled {
+    pointer-events: all;
+    color: rgb(255, 255, 255, 0.9);
+    background-color: rgb(23, 15, 156);
 }
