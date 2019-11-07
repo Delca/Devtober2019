@@ -51,120 +51,173 @@ var companies = {
 
 // ---- //
 
-export function getInventory() {
-    return {
-        1956485675964: {
-            type: 0,
-            code: 1956485675964,
-            maker: {
-                id: 56485,
-                name: 'Dem makerZ'
-            },
-            product: {
-                id: 67596,
-                name: 'Dat produK'
-            },
-            quantity: 3,
-        },
-        7658456521325: {
-            type: 1,
-            code: 7658456521325,
-            maker: {
-                id: 56485,
-                name: 'Dem makerZ'
-            },
-            product: {
-                id: 67596,
-                name: 'Dat produK'
-            },
-            quantity: 3,
-        },
-        3645212568945: {
-            type: 2,
-            code: 3645212568945,
-            maker: {
-                id: 56485,
-                name: 'Dem makerZ'
-            },
-            product: {
-                id: 67596,
-                name: 'Dat produK'
-            },
-            quantity: 3,
-        },
-        6495127835642: {
-            type: 3,
-            code: 6495127835642,
-            maker: {
-                id: 56485,
-                name: 'Dem makerZ'
-            },
-            product: {
-                id: 67596,
-                name: 'Dat produK'
-            },
-            quantity: 3,
-        },
-        46372158649524: {
-            type: 4,
-            code: 46372158649524,
-            maker: {
-                id: 56485,
-                name: 'Dem makerZ'
-            },
-            product: {
-                id: 67596,
-                name: 'Dat produK'
-            },
-            quantity: 3,
-        },
-        7546852315246: {
-            type: 1,
-            code: 7546852315246,
-            cost: {
-                0: 0, 1: 1, 2: 2, 3: 1, 4: 2,
-                5: 3, 6: 2, 7: 1, 8: 1, 9: 0, 
-            },
-            maker: {
-                id: 56485,
-                name: 'Dem makerZ'
-            },
-            product: {
-                id: 67596,
-                name: 'Dat produK'
-            },
-            quantity: 1,
-        },
-        5621345215236: {
-            type: 1,
-            code: 5621345215236,
-            maker: {
-                id: 56485,
-                name: 'Dem makerZ'
-            },
-            product: {
-                id: 67596,
-                name: 'Dat produK'
-            },
-            quantity: 8,
-        },
-    };
+export function getInventoryData() {
+    let inventoryToReturn = null;
+    manipulateUserData('inventory', (inventoryData) => {
+        if (inventoryData.products === undefined) {
+            let startingInventory = {
+                products: {
+                    1956485675964: {
+                        category: 0,
+                        code: 1956485675964,
+                        maker: {
+                            id: 56485,
+                            name: 'Dem makerZ'
+                        },
+                        product: {
+                            id: 67596,
+                            name: 'Dat produK'
+                        },
+                        quantity: 3,
+                    },
+                    7658456521325: {
+                        category: 1,
+                        code: 7658456521325,
+                        maker: {
+                            id: 56485,
+                            name: 'Dem makerZ'
+                        },
+                        product: {
+                            id: 67596,
+                            name: 'Dat produK'
+                        },
+                        quantity: 3,
+                    },
+                    3645212568945: {
+                        category: 2,
+                        code: 3645212568945,
+                        maker: {
+                            id: 56485,
+                            name: 'Dem makerZ'
+                        },
+                        product: {
+                            id: 67596,
+                            name: 'Dat produK'
+                        },
+                        quantity: 3,
+                    },
+                    6495127835642: {
+                        category: 3,
+                        code: 6495127835642,
+                        maker: {
+                            id: 56485,
+                            name: 'Dem makerZ'
+                        },
+                        product: {
+                            id: 67596,
+                            name: 'Dat produK'
+                        },
+                        quantity: 3,
+                    },
+                    46372158649524: {
+                        category: 4,
+                        code: 46372158649524,
+                        maker: {
+                            id: 56485,
+                            name: 'Dem makerZ'
+                        },
+                        product: {
+                            id: 67596,
+                            name: 'Dat produK'
+                        },
+                        quantity: 3,
+                    },
+                    7546852315246: {
+                        category: 1,
+                        code: 7546852315246,
+                        cost: {
+                            0: 0, 1: 1, 2: 2, 3: 1, 4: 2,
+                            5: 3, 6: 2, 7: 1, 8: 1, 9: 0,
+                        },
+                        maker: {
+                            id: 56485,
+                            name: 'Dem makerZ'
+                        },
+                        product: {
+                            id: 67596,
+                            name: 'Dat produK'
+                        },
+                        quantity: 1,
+                    },
+                    5621345215236: {
+                        category: 1,
+                        code: 5621345215236,
+                        maker: {
+                            id: 56485,
+                            name: 'Dem makerZ'
+                        },
+                        product: {
+                            id: 67596,
+                            name: 'Dat produK'
+                        },
+                        quantity: 8,
+                    },
+                    7546825316524: {
+                        category: 0,
+                        code: 7546825316524,
+                        maker: {
+                            id: 56485,
+                            name: 'Dem makerZ'
+                        },
+                        product: {
+                            id: 67596,
+                            name: 'Dat produK'
+                        },
+                        quantity: 0,
+                    },
+                    4658212523469: {
+                        category: 4,
+                        code: 4658212523469,
+                        maker: {
+                            id: 56485,
+                            name: 'Dem makerZ'
+                        },
+                        product: {
+                            id: 67596,
+                            name: 'Dat produK'
+                        },
+                        quantity: 0,
+                    },
+                },
+                sticks: {},
+            };
+
+            for (let i = 0; i < 10; ++i) {
+                startingInventory.sticks[i] = {
+                    stick: i,
+                    quantity: ((13 * i) % 10)
+                };
+            }
+
+            Object.assign(inventoryData, startingInventory);
+        }
+
+        inventoryToReturn = inventoryData;
+    });
+
+    return inventoryToReturn;
 }
 
-export function getStickInventory() {
-    let data = {};
-
-    for (let i = 0; i < 10; ++i) {
-        data[i] = {
-            stick: i,
-            quantity: ((13 * i) % 10)
-        };
-    }
-
-    return data;
+export function getStickInventoryData() {
+    return getInventoryData().sticks;
 }
 
 export function getObjectiveData() {
+    let objectiveDataToReturn = null;
+    manipulateUserData('objective', (objectiveData) => {
+        if (objectiveData.userLevel === undefined) {
+            // initialize the objective data
+            Object.assign(objectiveData, {
+                userLevel: 0,
+                objectiveList: generateObjectiveList(0)
+            });
+        }
+
+        objectiveDataToReturn = objectiveData;
+    });
+
+    return objectiveDataToReturn;
+
     return [
         {
             type: 4,
@@ -231,15 +284,22 @@ function saveUserData(category, data) {
     localStorage.setItem(getSaveKey(category), JSON.stringify(data));
 }
 
-export function manipulateUserData(category, handler = Function.prototype) {
-    let userData = getUserData(category);
+export function manipulateUserData(categories, handler = Function.prototype) {
+    if (typeof (categories) === 'string') {
+        categories = [categories];
+    }
+
+    let userData = categories.map(getUserData);
 
     try {
-        handler(userData);
+        handler.apply(null, userData);
 
-        saveUserData(category, userData);
+        categories.forEach((category, i) => {
+            saveUserData(category, userData[i]);
+        });
     }
     catch (e) {
-        console.error(`Error while manipulatin ${category} save data, no change has been saved`);
-    }    
+        console.error(`Error while manipulating ${categories} save data, no change has been saved`);
+        throw e;
+    }
 }
