@@ -24,7 +24,7 @@ export class ObjectiveController {
 
         // Retrieve the correct height to animate the dropdown
         this.maxContentHeight = this.contentElement.clientHeight;
-        //this.contentElement.style.maxHeight = '0px';
+        this.contentElement.style.maxHeight = '0px';
     }
 
     toggleContent() {
