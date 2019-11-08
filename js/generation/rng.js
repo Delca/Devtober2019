@@ -7,6 +7,12 @@ function getCurrentSeed() {
     return getUserData('rng').currentValue;
 }
 
+function setCurrentSeed(seed) {
+    manipulateUserData('rng', data => {
+        data.currentValue = seed;
+    });
+}
+
 function nextValue() {
     let result = null;
 
@@ -33,6 +39,7 @@ function pickFromArray(arr) {
 
 export const RNG = {
     getCurrentSeed,
+    setCurrentSeed,
     nextValue,
     nextValueFloat,
     pickFromArray,

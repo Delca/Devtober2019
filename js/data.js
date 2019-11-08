@@ -51,6 +51,49 @@ var companies = {
 
 // ---- //
 
+export function breakCode(code, sticks) {
+    code = code.toString();
+
+    const retrievalProbability = (
+        code.length < 13 ? 0.35 : (
+            code.length > 13 ? 0.2 : (
+                0.80
+            )
+        )
+    );
+
+    code.split('').forEach(number => {
+        const retrievalRoll = RNG.nextValueFloat();
+
+        if (retrievalRoll >= retrievalProbability) {
+            sticks[number].quantity += 1;
+        }
+    });
+}
+
+export function transferStickWallet(sourceWallet, targetWallet, doNotEmptySourceWallet = false) {
+    for (let i = 0; i < 10; ++i) {
+        targetWallet[i].quantity = clamp(0, targetWallet[i].quantity + sourceWallet[i].quantity, 999);
+
+        if (doNotEmptySourceWallet === false) {
+            sourceWallet[i].quantity = 0;
+        }
+    }
+}
+
+export function createEmptyStickWallet(fill = false) {
+    const sticks = {};
+
+    for (let i = 0; i < 10; ++i) {
+        sticks[i] = {
+            stick: i,
+            quantity: (fill ? ((13 * i) % 10) : 0)
+        };
+    }
+
+    return sticks;
+}
+
 export function getInventoryData() {
     let inventoryToReturn = null;
     manipulateUserData('inventory', (inventoryData) => {
@@ -179,15 +222,8 @@ export function getInventoryData() {
                         quantity: 0,
                     },
                 },
-                sticks: {},
+                sticks: createEmptyStickWallet(true),
             };
-
-            for (let i = 0; i < 10; ++i) {
-                startingInventory.sticks[i] = {
-                    stick: i,
-                    quantity: ((13 * i) % 10)
-                };
-            }
 
             Object.assign(inventoryData, startingInventory);
         }
