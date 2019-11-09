@@ -20,11 +20,13 @@ export class ScannerModalController {
         }
         
         const scanSuccess = (result) => {
-            if (this.scannedBarcodes.some(c => c.code === result.text) === false) {
+            const scannedCode = result.text.replace(/[^0-9]/g, '');
+
+            if (scannedCode.length > 0 && this.scannedBarcodes.some(c => c.code === scannedCode) === false) {
                 console.log(result);
                 this.triggerFlashAnimation();
                 this.scannedBarcodes.push({
-                    code: result.text,
+                    code: scannedCode,
                     date: Date.now()
                 });
             }
