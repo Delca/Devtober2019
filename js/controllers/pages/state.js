@@ -48,6 +48,7 @@ class StatePageController {
 
     displayStickData() {
         this.inventory = getInventoryData();
+        this.stickGridElement.controller.updateDisplay(this.inventory.sticks);
 
         this.objectiveTabElement.style.display = 'none';
         this.stickTabElement.style.display = 'grid';

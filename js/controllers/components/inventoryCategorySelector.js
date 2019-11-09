@@ -33,6 +33,10 @@ export class InventoryCategorySelectorController {
 
     initializeProductRows() {
         this.data.content.forEach(productSelection => {
+            if (productSelection.product.quantity <= 0) {
+                return;
+            }
+
             let productNameElement = document.createElement('div');
             let selectedAmountElement = document.createElement('div');
             let minusPlusPanelElement = document.createElement('div');

@@ -20,15 +20,15 @@ class CollectionPageController {
     }
 
     loadDataFromMemory() {
-        this.inventory = getInventory();
+        this.inventory = getInventoryData();
     }
 
     displayByCategory() {
         this.byCategoryTabHeaderElement.classList = 'is-active';
         this.byMakerTabHeaderElement.classList = '';
 
-        let categoryContents = Object.getOwnPropertyNames(this.inventory)
-            .map(productCode => this.inventory[productCode])
+        let categoryContents = Object.getOwnPropertyNames(this.inventory.products)
+            .map(productCode => this.inventory.products[productCode])
             .reduce((acc, val) => {
                 acc[val.type] = acc[val.type] || [];
 
@@ -60,8 +60,8 @@ class CollectionPageController {
         this.byCategoryTabHeaderElement.classList = '';
         this.byMakerTabHeaderElement.classList = 'is-active';
 
-        let makerContents = Object.getOwnPropertyNames(this.inventory)
-            .map(productCode => this.inventory[productCode])
+        let makerContents = Object.getOwnPropertyNames(this.inventory.products)
+            .map(productCode => this.inventory.products[productCode])
             .reduce((acc, val) => {
                 acc[val.maker.id] = acc[val.maker.id] || [];
 

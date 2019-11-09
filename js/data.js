@@ -51,6 +51,16 @@ var companies = {
 
 // ---- //
 
+export function getProductCodeCost(code) {
+    const cost = createEmptyStickWallet();
+
+    `${code}`.split('').forEach(number => {
+        cost[number].quantity += 1;
+    });
+
+    return cost;
+}
+
 export function breakCode(code, sticks) {
     code = code.toString();
 

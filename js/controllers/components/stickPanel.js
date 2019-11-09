@@ -15,7 +15,7 @@ export class StickPanelController {
     }
 
     loadDataFromMemory() {
-        this.data = getStickInventoryData();
+        this.data = getInventoryData().sticks;
     }
 
     updateDisplay(data = null) {

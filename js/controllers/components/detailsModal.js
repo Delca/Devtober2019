@@ -2,6 +2,7 @@ export class DetailsModalController {
     constructor(data) {
         this.element = null;
         this.data = data;
+        this.singleCost = getProductCodeCost(data.code);
         this.stickInventory = null;
         this.orderQuantity = 1;
     }
@@ -23,8 +24,9 @@ export class DetailsModalController {
 
         this.orderPanelTitleElement.innerText = `Order from ${this.data.maker.name}`;
 
-        this.orderLessButtonElement.addEventListener('click', _ => this.updateCost(-1));
-        this.orderMoreButtonElement.addEventListener('click', _ => this.updateCost(1));
+        this.orderLessButtonElement.addEventListener('click', _ => this.updateCostDisplay(-1));
+        this.orderMoreButtonElement.addEventListener('click', _ => this.updateCostDisplay(1));
+        this.placeOrderButtonElement.addEventListener('click', _ => this.placeOrder());
 
         this.stickPanelController = new StickPanelController(this.data.cost);
         this.stickPanelElement = instantiateTemplate('stick-panel-component', this.stickCostPanelElement, this.stickPanelController);
@@ -32,7 +34,7 @@ export class DetailsModalController {
         this.updateProductInfo();
 
         this.stickInventory = getStickInventoryData();
-        this.updateCost();
+        this.updateCostDisplay();
     }
 
     updateProductInfo() {
@@ -48,30 +50,51 @@ export class DetailsModalController {
         this.tagGridElement.children[9].children[1].innerText = 0;
     }
 
-    updateCost(quantity = 0) {
-        this.orderQuantity = clamp(1, this.orderQuantity + quantity, 99);
-        this.orderNumberInputElement.innerText = this.orderQuantity;
+    computeCost() {
+        const cost = {};
 
-        let cost = {};
-
-        let atLeastOneUnmetCost = false;
+        this.preventPlacingOrder = false;
 
         for (let i = 0; i < 10; ++i) {
             cost[i] = {
                 stick: i,
-                quantity: this.orderQuantity * (this.data.cost[i] || 0),
+                quantity: this.orderQuantity * (this.singleCost[i].quantity || 0),
             };
 
             cost[i].isError = (cost[i].quantity > this.stickInventory[i].quantity);
-            atLeastOneUnmetCost = atLeastOneUnmetCost || cost[i].isError;
+            this.preventPlacingOrder = this.preventPlacingOrder || cost[i].isError;
         }
 
+        return cost;
+    }
+
+    updateCostDisplay(quantity = 0) {
+        this.orderQuantity = clamp(1, this.orderQuantity + quantity, 99);
+        this.orderNumberInputElement.innerText = this.orderQuantity;
+
+        let cost = this.computeCost();
+
         this.stickPanelController.updateDisplay(cost);
-        this.placeOrderButtonElement.classList = `tag place-order-button ${atLeastOneUnmetCost ? '' : 'is-active'}`
+        this.placeOrderButtonElement.classList = `tag place-order-button ${this.preventPlacingOrder ? '' : 'is-active'}`
     }
 
     static open(data) {
         instantiateTemplate('details-modal-component', document.body, new DetailsModalController(data));
+    }
+
+    placeOrder() {
+        const cost = this.computeCost();
+
+        manipulateUserData('inventory', (inventoryData) => {
+            for (let i = 0; i <= 9; ++i) {
+                inventoryData.sticks[i].quantity = clamp(0, (inventoryData.sticks[i].quantity - cost[i].quantity), 999);
+            }
+
+            inventoryData.products[this.data.code].quantity += this.orderQuantity;
+
+            this.close();
+            DetailsModalController.open(this.data);
+        });
     }
 
     close() {

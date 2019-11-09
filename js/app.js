@@ -74,6 +74,7 @@ function instantiateTemplate(templateID, parent = document.body, controller = nu
     }
 
     if (controller) {
+        instance.controller = controller;
         controller.initialize(instance);
     }
 
@@ -127,5 +128,5 @@ window.addEventListener('load', async () => {
         resolve = r;
     });
 
-    navigationController.openPage('state-page');
+    navigationController.openPage('collection-page');
 });
