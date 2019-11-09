@@ -464,20 +464,20 @@ span.stick-type {
     overflow: hidden;
 }
 
-.scanner-modal-component .card-content:after {
+.scanner-modal-component .scan-overlay {
     content: '.';
     position: absolute;
-    top: 5px;
-    bottom: 5px;
-    left: 5px;
-    right: 5px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     transition: background-color 0.8s linear;
     color: #FFFFFF00;
     background-color: #FFFFFF00;
     border-radius: 15px;
 }
 
-.scanner-modal-component.successful-scan .card-content:after {
+.scanner-modal-component .scan-overlay.successful-scan {
     background-color: #FFFFFFFF;
     transition: background-color 0.03s linear;
 }
@@ -488,9 +488,46 @@ span.stick-type {
 
 .scanner-modal-component .card-content {
     position: relative;
-    padding: 5px 5px 0 5px;
+    padding: 0;
+    margin: 5px 5px 0 5px;
+    border: 1px solid black;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .scanner-modal-component .card-foot {
-    padding: 0 5px 5px 5px;
+    padding: 5px;
+}
+
+.scanner-modal-component .scan-counter,
+.scanner-modal-component .last-scan {
+    position: absolute;
+    color: #4A4A4A;
+    background-color: #BBC0BB;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.scanner-modal-component .scan-counter {
+    top: 0;
+    width: 30px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 15px 0 15px 0;
+    padding: 0 5px;
+}
+
+.scanner-modal-component .last-scan {
+    top: -45px;
+    left: 50%;
+    border: 1px solid black;
+    border-radius: 0 0 15px 15px;
+    transform: translateX(-50%);
+    padding: 0 10px;
+    transition: top 0.3s linear;
+}
+
+.scanner-modal-component .last-scan.active {
+    top: 0;
 }

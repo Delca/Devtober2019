@@ -7,10 +7,19 @@ export class ScannerModalController {
     initialize(element) {
         this.element = element;
         this.closeButton = element.querySelector('.close-button');
+        this.scanOverlayElement = element.querySelector('.scan-overlay');
+        this.scanCounterElement = element.querySelector('.scan-counter');
+        this.lastScanElement = element.querySelector('.last-scan');
 
         this.closeButton.addEventListener('click', _ => ScannerModalController.close());
 
         this.launchScan();
+    }
+
+    updateScanHUD() {
+        this.scanCounterElement.innerText = this.scannedBarcodes.length;
+        this.lastScanElement.classList = `last-scan ${this.scannedBarcodes.length > 0 ? 'active' : ''}`;
+        this.lastScanElement.innerText = (this.scannedBarcodes.length > 0 ? this.scannedBarcodes[this.scannedBarcodes.length - 1].code : '');
     }
 
     launchScan() {
@@ -24,11 +33,12 @@ export class ScannerModalController {
 
             if (scannedCode.length > 0 && this.scannedBarcodes.some(c => c.code === scannedCode) === false) {
                 console.log(result);
-                this.triggerFlashAnimation();
                 this.scannedBarcodes.push({
                     code: scannedCode,
                     date: Date.now()
                 });
+                this.updateScanHUD();
+                this.triggerFlashAnimation();
             }
         }
     
@@ -50,9 +60,9 @@ export class ScannerModalController {
     }
 
     triggerFlashAnimation() {
-        this.element.classList = 'scanner-modal-component successful-scan';
+        this.scanOverlayElement.classList = 'scan-overlay successful-scan';
 
-        setTimeout(_ => this.element.classList = 'scanner-modal-component', 60);
+        setTimeout(_ => this.scanOverlayElement.classList = 'scan-overlay', 60);
     }
 
     static checkForVideoInput() {
