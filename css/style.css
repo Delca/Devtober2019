@@ -450,3 +450,47 @@ span.stick-type {
     color: rgb(255, 255, 255, 0.9);
     background-color: rgb(23, 15, 156);
 }
+
+/* ---- */
+
+.scanner-modal-component .card {
+    width: 90%;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.scanner-modal-component video {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.scanner-modal-component .card-content:after {
+    content: '.';
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    transition: background-color 0.8s linear;
+    color: #FFFFFF00;
+    background-color: #FFFFFF00;
+    border-radius: 15px;
+}
+
+.scanner-modal-component.successful-scan .card-content:after {
+    background-color: #FFFFFFFF;
+    transition: background-color 0.03s linear;
+}
+
+.scanner-modal-component .card-foot {
+    text-align: center;
+}
+
+.scanner-modal-component .card-content {
+    position: relative;
+    padding: 5px 5px 0 5px;
+}
+
+.scanner-modal-component .card-foot {
+    padding: 0 5px 5px 5px;
+}

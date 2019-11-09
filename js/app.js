@@ -16,6 +16,7 @@ var templatesToLoad = [
     'components/inventoryCategorySelector',
     'components/inventoryCollectionDisplay',
     'components/detailsModal',
+    'components/scannerModal',
 ];
 var importFilenames = [
     '/Devtober2019/js/scannerModal.js',
@@ -29,6 +30,7 @@ var importFilenames = [
     '/Devtober2019/js/controllers/components/inventoryCategorySelector.js',
     '/Devtober2019/js/controllers/components/inventoryCollectionDisplay.js',
     '/Devtober2019/js/controllers/components/detailsModal.js',
+    '/Devtober2019/js/controllers/components/scannerModal.js',
     '/Devtober2019/js/generation/rng.js',
     '/Devtober2019/js/generation/objective.js',
 ];
@@ -89,7 +91,7 @@ window.addEventListener('load', async () => {
     console.log('app.js LOAD LOG');
 
     if (window.location.hostname !== 'localhost') {
-        checkForVideoInput();
+        ScannerModalController.checkForVideoInput();
     }
 
     var parser = new DOMParser();
@@ -114,7 +116,7 @@ window.addEventListener('load', async () => {
 
             var template = parser.parseFromString(responseText, 'text/html').querySelector('head > template');
             document.body.appendChild(template);
-            console.log(`Imported template ${templateName}`);
+            //console.log(`Imported template ${templateName}`);
         }
         catch (e) {
             console.error(`Error while loading template ${templatesToLoad}: ${e}`);
@@ -128,5 +130,5 @@ window.addEventListener('load', async () => {
         resolve = r;
     });
 
-    navigationController.openPage('collection-page');
+    navigationController.openPage('home-page');
 });
