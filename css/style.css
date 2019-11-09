@@ -489,7 +489,6 @@ span.stick-type {
 .scanner-modal-component .card-content {
     position: relative;
     padding: 0;
-    margin: 5px 5px 0 5px;
     border: 1px solid black;
     border-radius: 15px;
     overflow: hidden;
@@ -530,4 +529,8 @@ span.stick-type {
 
 .scanner-modal-component .last-scan.active {
     top: 0;
+}
+
+.scanner-modal-component video {
+    display: block;
 }
