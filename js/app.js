@@ -33,6 +33,7 @@ var importFilenames = [
     '/Devtober2019/js/controllers/components/scannerModal.js',
     '/Devtober2019/js/generation/rng.js',
     '/Devtober2019/js/generation/objective.js',
+    '/Devtober2019/js/generation/product.js',
 ];
 var index = 0;
 

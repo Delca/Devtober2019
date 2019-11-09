@@ -20,6 +20,8 @@ export class ScannerModalController {
         this.scanCounterElement.innerText = this.scannedBarcodes.length;
         this.lastScanElement.classList = `last-scan ${this.scannedBarcodes.length > 0 ? 'active' : ''}`;
         this.lastScanElement.innerText = (this.scannedBarcodes.length > 0 ? this.scannedBarcodes[this.scannedBarcodes.length - 1].code : '');
+    
+        this.closeButton.innerText = (this.scannedBarcodes.length === 0 ? 'Close' : 'Store and close');
     }
 
     launchScan() {
@@ -92,6 +94,12 @@ export class ScannerModalController {
             console.error('A scanner modal must be open to be able to close it');
             return;
         }
+
+        manipulateUserData('inventory', (inventoryData) => {
+            ScannerModalController.instance.scannedBarcodes.forEach(scannedCode => {
+                addProductToInventory(inventoryData, scannedCode.code, 1);
+            });
+        });
 
         if (ScannerModalController.zxingCodeReader) {
             ScannerModalController.zxingCodeReader.stopContinuousDecode();
