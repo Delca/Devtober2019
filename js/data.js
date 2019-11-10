@@ -85,11 +85,10 @@ export function fillOutTemplate(template) {
     const names = [
         RNG.pickFromArray(PeopleNames),
         RNG.pickFromArray(PeopleNames),
+        // TODO: generate fake names by combining names from above
         RNG.pickFromArray(PeopleNames),
         RNG.pickFromArray(PeopleNames),
     ];
-
-    console.log(names);
 
     return template
         .replace(/%0/g, names[0])
