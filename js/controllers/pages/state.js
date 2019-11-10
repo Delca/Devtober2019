@@ -58,9 +58,9 @@ class StatePageController {
         let categoryContents = Object.getOwnPropertyNames(this.inventory.products)
             .map(productCode => this.inventory.products[productCode])
             .reduce((acc, val) => {
-                acc[val.type] = acc[val.type] || [];
+                acc[val.category] = acc[val.category] || [];
 
-                acc[val.type].push({
+                acc[val.category].push({
                     product: val,
                     selectedAmount: 0,
                 });
@@ -76,11 +76,11 @@ class StatePageController {
         this.inventorySelectionControllers.length = 0;
 
 
-        Object.getOwnPropertyNames(categoryContents).forEach(type => {
+        Object.getOwnPropertyNames(categoryContents).forEach(category => {
             let categoryData = {
-                type,
-                name: `Category #${type}`,
-                content: categoryContents[type]
+                category,
+                name: ProductTypeName[category],
+                content: categoryContents[category]
             }
 
             const controller = new InventoryCategorySelectorController(categoryData);
