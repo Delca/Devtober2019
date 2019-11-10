@@ -1,5 +1,5 @@
 if ('serviceWorker' in navigator) {
-   navigator.serviceWorker.register('/Devtober2019/js/mainSW.js');
+   navigator.serviceWorker.register('/Restock/js/mainSW.js');
 }
 
 var templatesToLoad = [
@@ -19,22 +19,22 @@ var templatesToLoad = [
     'components/scannerModal',
 ];
 var importFilenames = [
-    '/Devtober2019/js/scannerModal.js',
-    '/Devtober2019/js/data.js',
-    '/Devtober2019/js/controllers/navigation.js',
-    '/Devtober2019/js/controllers/pages/home.js',
-    '/Devtober2019/js/controllers/pages/state.js',
-    '/Devtober2019/js/controllers/pages/collection.js',
-    '/Devtober2019/js/controllers/components/objective.js',
-    '/Devtober2019/js/controllers/components/stick.js',
-    '/Devtober2019/js/controllers/components/stickPanel.js',
-    '/Devtober2019/js/controllers/components/inventoryCategorySelector.js',
-    '/Devtober2019/js/controllers/components/inventoryCollectionDisplay.js',
-    '/Devtober2019/js/controllers/components/detailsModal.js',
-    '/Devtober2019/js/controllers/components/scannerModal.js',
-    '/Devtober2019/js/generation/rng.js',
-    '/Devtober2019/js/generation/objective.js',
-    '/Devtober2019/js/generation/product.js',
+    '/Restock/js/scannerModal.js',
+    '/Restock/js/data.js',
+    '/Restock/js/controllers/navigation.js',
+    '/Restock/js/controllers/pages/home.js',
+    '/Restock/js/controllers/pages/state.js',
+    '/Restock/js/controllers/pages/collection.js',
+    '/Restock/js/controllers/components/objective.js',
+    '/Restock/js/controllers/components/stick.js',
+    '/Restock/js/controllers/components/stickPanel.js',
+    '/Restock/js/controllers/components/inventoryCategorySelector.js',
+    '/Restock/js/controllers/components/inventoryCollectionDisplay.js',
+    '/Restock/js/controllers/components/detailsModal.js',
+    '/Restock/js/controllers/components/scannerModal.js',
+    '/Restock/js/generation/rng.js',
+    '/Restock/js/generation/objective.js',
+    '/Restock/js/generation/product.js',
 ];
 var index = 0;
 

@@ -1,7 +1,7 @@
 {
-  "name": "PWA Test",
-  "short_name": "pwaTest",
-  "description": "A test PWA for devtober2019",
+  "name": "Restock!",
+  "short_name": "Restock!",
+  "description": "A game by @Delca for ProcJam 2019",
   "icons": [
     {
       "src": "icons/icon-192.png",
@@ -9,7 +9,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/Devtober2019/index.html",
+  "start_url": "/Restock/index.html",
   "display": "fullscreen",
   "theme_color": "#886688",
   "background-color": "#443344"

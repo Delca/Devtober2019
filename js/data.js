@@ -276,7 +276,7 @@ export function getObjectiveData() {
 // ---- //
 
 function getSaveKey(category) {
-    return `devtober2019-${category}`;
+    return `restock-${category}`;
 }
 
 export function getUserData(category) {
