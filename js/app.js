@@ -22,6 +22,7 @@ var importFilenames = [
     '/Devtober2019/js/scannerModal.js',
     '/Devtober2019/js/data.js',
     '/Devtober2019/js/controllers/navigation.js',
+    '/Devtober2019/js/controllers/pages/home.js',
     '/Devtober2019/js/controllers/pages/state.js',
     '/Devtober2019/js/controllers/pages/collection.js',
     '/Devtober2019/js/controllers/components/objective.js',

@@ -24,6 +24,28 @@ body > * {
 
 /* ---- */
 
+.home-page h1 {
+    text-align: center;
+    font-size: 3em;
+    font-weight: bold;
+    font-family: arial;
+    line-height: 1em;
+    margin-top: 5%;
+}
+
+.home-page h3 {
+    text-align: center;
+    font-size: 0.8em;
+    font-family: arial;
+}
+
+.home-page h3:last-child {
+    bottom: 15px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .home-page .grid {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -548,3 +570,5 @@ span.stick-type {
 .scanner-modal-component video {
     display: block;
 }
+
+/* ---- */

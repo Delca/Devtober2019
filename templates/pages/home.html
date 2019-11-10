@@ -1,7 +1,9 @@
 <html>
     <head>
         <template id="home-page">
-            <div class="home-page">
+            <div class="home-page" data-controller="homePageController">
+                <h1>Restock!</h1>
+                <h3 class="list-completion-count" ></h3>
                 <div class="grid">
                     <div class="grid-icon" onclick="navigationController.openPage('state-page', { fromRight: true })">
                         <i class="fas fa-clipboard-list" style="width: 40%;"></i>
@@ -20,6 +22,7 @@
                         <span>Scan</span>
                     </div>
                 </div>
+                <h3>A game by @Delcaw</h3>
             </div>
         </template>        
     </head>
