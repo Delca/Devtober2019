@@ -120,7 +120,12 @@ class StatePageController {
             transferStickWallet(earnedSticks, inventoryData.sticks);
 
             codesToBreak.forEach(productCode => {
-                inventoryData.products[productCode].quantity = clamp(0, (inventoryData.products[productCode].quantity - 1) , 999);
+                const product = inventoryData.products[productCode];
+                product.quantity = clamp(0, (product.quantity - 1) , 999);
+            
+                if (product.stats) {
+                    product.stats.timesBroken += 1;
+                }
             });
         });
 

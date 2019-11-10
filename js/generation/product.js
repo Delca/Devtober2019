@@ -53,6 +53,15 @@ export function generateProduct(code) {
             name: `Unknown`
         },
         quantity: 0,
+        stats: {
+            firstScanTimestamp: null,
+            lastScanTimestamp: null,
+            timesScanned: 0,
+            timesOrdered: 0,
+            timesGifted: 0,
+            timesSubmitted: 0,
+            timesBroken: 0,
+        }
     };
 
     if (matches) {

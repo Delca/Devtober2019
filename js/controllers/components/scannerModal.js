@@ -98,6 +98,14 @@ export class ScannerModalController {
         manipulateUserData('inventory', (inventoryData) => {
             ScannerModalController.instance.scannedBarcodes.forEach(scannedCode => {
                 addProductToInventory(inventoryData, scannedCode.code, 1);
+
+                const product = inventoryData.products[scannedCode.code];
+
+                if (product.stats) {
+                    product.stats.lastScanTimestamp = Date.now();    
+                    product.stats.firstScanTimestamp = product.stats.firstScanTimestamp || product.stats.lastScanTimestamp;
+                    product.stats.timesScanned += 1;
+                }
             });
         });
 

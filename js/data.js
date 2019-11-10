@@ -102,7 +102,10 @@ export function fillOutTemplate(template) {
 
 export function addProductToInventory(inventory, code, quantity) {
     inventory.products[code] = inventory.products[code] || generateProduct(code);
-    inventory.products[code].quantity = clamp(0, (inventory.products[code].quantity + quantity), 999);    
+
+    const product = inventory.products[code];
+
+    product.quantity = clamp(0, (product.quantity + quantity), 999);
 }
 
 export function getProductCodeCost(code) {

@@ -190,11 +190,11 @@ export class ObjectiveController {
                 const inventorySlot = inventoryData.products[productSubmission.code];
                 objective.submitted = objective.submitted.concat(Array(productSubmission.quantity).fill(0).map(_ => productSubmission.code));
 
-                console.log(inventorySlot);
-
                 inventorySlot.quantity = clamp(0, inventorySlot.quantity - productSubmission.quantity, 999);
 
-                console.log(inventorySlot);
+                if (inventorySlot.stats) {
+                    inventorySlot.stats.timesSubmitted += productSubmission.quantity;
+                }
             });
 
             if (objective.submitted.length >= objective.goalQuantity) {

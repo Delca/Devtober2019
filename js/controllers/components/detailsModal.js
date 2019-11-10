@@ -40,17 +40,27 @@ export class DetailsModalController {
         this.updateCostDisplay();
     }
 
+    formatDate(timestamp) {
+        if (!timestamp) {
+            return '-';
+        }
+
+        const date = new Date(timestamp);
+
+        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    }
+
     updateProductInfo() {
         this.tagGridElement.children[0].children[1].innerText = this.data.maker.name;
-        this.tagGridElement.children[1].children[1].innerText = 0;
+        this.tagGridElement.children[1].children[1].innerText = this.data.stats.timesScanned;
         this.tagGridElement.children[2].children[1].innerText = ProductTypeName[this.data.category];
-        this.tagGridElement.children[3].children[1].innerText = 0;
+        this.tagGridElement.children[3].children[1].innerText = this.data.stats.timesOrdered;
         this.tagGridElement.children[4].children[1].innerText = this.data.product.name;
-        this.tagGridElement.children[5].children[1].innerText = 0;
-        this.tagGridElement.children[6].children[1].innerText = '2019-10-10';
-        this.tagGridElement.children[7].children[1].innerText = 0;
-        this.tagGridElement.children[8].children[1].innerText = '2019-11-04';
-        this.tagGridElement.children[9].children[1].innerText = 0;
+        this.tagGridElement.children[5].children[1].innerText = this.data.stats.timesGifted;
+        this.tagGridElement.children[6].children[1].innerText = this.formatDate(this.data.stats.firstScanTimestamp);
+        this.tagGridElement.children[7].children[1].innerText = this.data.stats.timesSubmitted;
+        this.tagGridElement.children[8].children[1].innerText = this.formatDate(this.data.stats.lastScanTimestamp);
+        this.tagGridElement.children[9].children[1].innerText = this.data.stats.timesBroken;
     }
 
     computeCost() {
@@ -93,10 +103,16 @@ export class DetailsModalController {
                 inventoryData.sticks[i].quantity = clamp(0, (inventoryData.sticks[i].quantity - cost[i].quantity), 999);
             }
 
-            inventoryData.products[this.data.code].quantity += this.orderQuantity;
+            const product = inventoryData.products[this.data.code];
 
+            product.quantity += this.orderQuantity;
+
+            if (product.stats) {
+                product.stats.timesOrdered += this.orderQuantity;
+            }
+            
             this.close();
-            DetailsModalController.open(this.data);
+            DetailsModalController.open(product);
         });
     }
 
