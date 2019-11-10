@@ -1,8 +1,9 @@
 export class ObjectiveController {
-    constructor(data) {
+    constructor(data, objectiveIndex) {
         this.element = null;
         this.data = data;
         this.contentOpened = false;
+        this.objectiveIndex = objectiveIndex;
     }
 
     initialize(element) {
@@ -171,7 +172,7 @@ export class ObjectiveController {
             }));
 
         manipulateUserData(['inventory', 'objective'], (inventoryData, objectiveData) => {
-            const objective = objectiveData.objectiveList.objectives.filter(o => o.firstValue === this.data.firstValue)[0];
+            const objective = objectiveData.objectiveList.objectives[this.objectiveIndex];
 
             submittedProducts.forEach(productSubmission => {
                 const inventorySlot = inventoryData.products[productSubmission.code];
@@ -183,6 +184,19 @@ export class ObjectiveController {
 
                 console.log(inventorySlot);
             });
+
+            if (objective.submitted.length >= objective.goalQuantity) {
+                objective.completionTimestamp = Date.now();
+            }
+
+            if (isObjectiveListCompleted(objectiveData.objectiveList)) {
+                objectiveData.objectiveList.completionTimestamp = objective.completionTimestamp;
+                objectiveData.completionHistory.push(objectiveData.objectiveList);
+                objectiveData.userLevel += 1;
+                objectiveData.objectiveList = null;
+
+                navigationController.openPage('home-page');
+            }
 
             this.data = objective;
         });

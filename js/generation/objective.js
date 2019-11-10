@@ -85,9 +85,9 @@ export function generateObjectiveList(userLevel) {
 }
 
 export function isObjectiveCompleted(objective) {
-    return objective.goalQuantity <= objective.submitted.length;
+    return (!!objective.completionTimestamp || (objective.goalQuantity <= objective.submitted.length));
 }
 
 export function isObjectiveListCompleted(objectiveList) {
-    return objectiveList.objectives.every(objective => isObjectiveCompleted(objective));
+    return (!!objectiveList.completionTimestamp || objectiveList.objectives.every(objective => isObjectiveCompleted(objective)));
 }

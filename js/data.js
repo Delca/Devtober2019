@@ -178,9 +178,14 @@ export function getObjectiveData() {
         if (objectiveData.userLevel === undefined) {
             // initialize the objective data
             Object.assign(objectiveData, {
-                userLevel: 15,
-                objectiveList: generateObjectiveList(15)
+                userLevel: 0,
+                objectiveList: null,
+                completionHistory: []
             });
+        }
+
+        if (!objectiveData.objectiveList) {
+            objectiveData.objectiveList = generateObjectiveList(objectiveData.userLevel);
         }
 
         objectiveDataToReturn = objectiveData;
