@@ -451,6 +451,16 @@ span.stick-type {
     background-color: rgb(23, 15, 156);
 }
 
+.objective-component .card-header-title {
+    display: inline;
+}
+
+.objective-component .objective-category,
+.objective-component .objective-maker,
+.objective-component .objective-product {
+    margin-bottom: 0;
+}
+
 /* ---- */
 
 .scanner-modal-component .card {

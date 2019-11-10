@@ -8,7 +8,7 @@ export function generateObjective(userLevel, forcedObjectiveType) {
     let goalQuantity = 1 + RNG.nextValue() % Math.min(24, (3 + 2 * Math.floor((userLevel || 0) / 6))); 
     let flavourTextId = RNG.nextValue() % ObjectiveFlavourText[objectiveType].length;
 
-    let categoryId = firstValue % Object.getOwnPropertyNames(ProductType).length - 1;
+    let categoryId = firstValue % (Object.getOwnPropertyNames(ProductType).length - 1);
     let makerId = firstValue % EntityCount.Maker;
     let productId = secondValue % ProductNameByProductType[categoryId].length;
 

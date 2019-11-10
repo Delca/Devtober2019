@@ -28,6 +28,15 @@ export function generateMaker(matches) {
     return maker;
 }
 
+export function getProductName(categoryId, productId) {
+    const currentSeed = RNG.getCurrentSeed();
+    RNG.setCurrentSeed(productId);
+    const name = RNG.pickFromArray(ProductNameByProductType[categoryId]);
+
+    RNG.setCurrentSeed(currentSeed);
+    return name;
+}
+
 export function generateProduct(code) {
     code = code.toString();
     const currentSeed = RNG.getCurrentSeed();
@@ -50,8 +59,7 @@ export function generateProduct(code) {
         product.category = generateCategory(matches[2]);
         product.product.id = parseInt(matches[3], 10);
 
-        RNG.setCurrentSeed(product.product.id);
-        product.product.name = RNG.pickFromArray(ProductNameByProductType[product.category]);
+        product.product.name = getProductName(product.category, product.product.id);
     }
 
     RNG.setCurrentSeed(currentSeed);

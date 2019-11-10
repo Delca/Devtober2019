@@ -32,12 +32,27 @@ export class ObjectiveController {
         this.contentOpened = !this.contentOpened;
     }
 
-    initializeHTMLFromObjectiveData() {
-        this.titleElement.innerHTML = `<b>[${this.data.submitted.length}/${this.data.goalQuantity}]</b>&nbsp;Objective Type${this.data.objectiveType}`;
+    getObjectiveName() {
+        switch (this.data.objectiveType) {
+            case ObjectiveType.Whatever:
+                return 'Anything goes';
+            case ObjectiveType.Category:
+                return ProductTypeName[this.data.categoryId];
+            case ObjectiveType.Maker:
+                return generateMakerName(this.data.makerId);
+            case ObjectiveType.Product:
+                return getProductName(this.data.categoryId, this.data.productId);
+            case ObjectiveType.Target:
+                return `${getProductName(this.data.categoryId, this.data.productId)} from ${generateMakerName(this.data.makerId)}`;
+        }
+    }
 
-        this.objectiveCategoryCounterElement.children[1].innerText = this.data.categoryId;
-        this.objectiveMakerCounterElement.children[1].innerText = this.data.makerId;
-        this.objectiveProductCounterElement.children[1].innerText = this.data.productId;
+    initializeHTMLFromObjectiveData() {
+        this.titleElement.innerHTML = `<b>[${this.data.submitted.length}/${this.data.goalQuantity}]</b>&nbsp;${this.getObjectiveName()}`;
+
+        this.objectiveCategoryCounterElement.children[1].innerText = ProductTypeName[this.data.categoryId];
+        this.objectiveMakerCounterElement.children[1].innerText = generateMakerName(this.data.makerId);
+        this.objectiveProductCounterElement.children[1].innerText = getProductName(this.data.categoryId, this.data.productId);
 
         this.objectiveCategoryCounterElement.style.display = 'none';
         this.objectiveMakerCounterElement.style.display = 'none';
@@ -136,6 +151,9 @@ export class ObjectiveController {
                     this.productGrid.appendChild(selectedAmountElement);
                     this.productGrid.appendChild(minusPlusPanelElement);
                 });
+        }
+        else {
+            this.submitButton.style.display = 'none';
         }
     }
 
