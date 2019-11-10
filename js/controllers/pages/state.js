@@ -23,7 +23,7 @@ class StatePageController {
 
         this.breakButton.addEventListener('click', _ => this.breakSelection());
 
-        this.displayStickData();
+        this.displayObjectiveData();
     }
 
     displayObjectiveData() {

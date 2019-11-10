@@ -1,16 +1,16 @@
 export const ProductType = {
     Vegetable: 0,
     Meat: 1,
-    Drugstore: 2,
+    Craft: 2,
     Furniture: 3,
     Electronics: 4,
     Other: 5,
 };
 
 export const ProductTypeName = {
-    0: 'Vegetable/Fruit',
-    1: 'Meat/Fish',
-    2: 'Drugstore',
+    0: 'Vegetal foods',
+    1: 'Animal foods',
+    2: 'Craft',
     3: 'Furniture',
     4: 'Electronics',
 }
@@ -32,14 +32,7 @@ export const ObjectiveFlavourText = {
 };
 
 export const EntityCount = {
-    Maker: 128,
-    ProductType: {
-        0: 15,
-        1: 20,
-        2: 30,
-        3: 40,
-        4: 70,
-    }
+    Maker: 128
 };
 
 var companies = {
@@ -49,6 +42,53 @@ var companies = {
     furniture: ['LBK Interiors', 'Royal House'],
     electronics: ['Cargo Superstars', 'Yeewah']
 };
+
+// %0 and %1 are both people name
+// %2 and %3 are both generated name
+export const MakerNameTemplateByProductType = {
+    [ProductType.Vegetable]: ['Old %0\'s farm', '%2 city fields', '%1 co-op', '%0 & Family', '%2 Agricultural Inc.', '%3\'s Greens'],
+    [ProductType.Meat]: ['%1\'s Butcher shop', '%0\'s', '%1\'s Nice Cut', '%2 Meat Division, Ltd.', '%2 & %1', '%3 Foods'],
+    [ProductType.Craft]: ['Local %0', '%1\'s Crafts', '%1 %3', '%0 & %1', 'Made by %0', '%2 Group'],
+    [ProductType.Furniture]: ['%3 Furnitures', 'A Home in %2', '%1, Woodworker', '%2', '%3', '%0\'s Sofa'],
+    [ProductType.Electronics]: ['%2Tech', '%2', '%3, Inc.', '%2 Electronics', '%3', '%1\'s'],
+};
+
+export const PeopleNames = [
+    'Charlotte', 'Christopher', 'Joe', 'Bianca', 'Sarah', 'Alex', 'Maxim', 'Mathilda',
+    'Leo', 'Lucas', 'Sam', 'Morgana', 'Richard', 'Lee', 'Marion', 'Carla', 'Louis',
+    'Ben', 'Yuna', 'Nora', 'Myriam', 'Laura', 'Abril', 'Salma', 'Aya', 'Mark', 'Omar',
+    'Ali', 'Juan', 'Augustin', 'Eli', 'James', 'Abigail', 'Oliver', 'Robin', 'Hans',
+    'William', 'Aaron', 'Tom', 'Charlie', 'Oskar', 'Emma', 'Lucie', 'Jack', 'Daniel' 
+];
+
+const vowels = /[aiueoy]/;
+const nonVowels = /[^aiueoy]/;
+
+export const ProductNameByProductType = {
+    [ProductType.Vegetable]: ['Tomato', 'Banana', 'Lettuce', 'Bell pepper', 'Beans', 'Chickpeas', 'Raspberries', 'Apple', 'Cucumber', 'Carrot', 'Potato', 'Sweet Potato', 'Lentils', 'Kiwi', 'Blueberries', 'Orange', 'Grapes', 'Avocado', 'Pear', 'Lemon', 'Plum', 'Apricot', 'Cherries', 'Cocount', 'Lychee', 'Grapefruit', 'Nectarine', 'Yuzu', 'Cranberry', 'Watermelon', 'Pineapple', 'Dragon fruit', 'Pomegranate', 'Melon'],
+    [ProductType.Meat]: ['Beef tongue', 'Ribeye', 'Round steak', 'Flank steak', 'Sirloin steak', 'T-bone steak', 'Lamb breast', 'Lamb shank', 'Chump chops', 'Bacon', 'Pork chops', 'Pork ribs', 'Ham', 'Sausages', 'Dry sausages', 'Shrimps', 'Mackerel', 'Herring', 'Tuna', 'Cod', 'Sardine', 'Crab', 'Squid'],
+    [ProductType.Craft]: ['Whisk', 'Rolling pin', 'Chisel', 'Hammer', 'Handbag', 'Pocket watch', 'Paper fan', 'Silk scarf', 'Fountain pen', 'Ceramic vase', 'Clay vase', 'Woven basket', 'Wooden bowl', 'Metal earrings', 'Paper hat', 'Golden ring', 'Polished ruby', 'Silver necklace', 'Glass teacup'],
+    [ProductType.Furniture]: ['Desk', 'Desk chair', 'Reclining chair', '3-place sofa', 'Single bed', 'Queen size bed', 'Bookshelf', 'Bean bag', 'Bar stool', 'Rocking chair', 'Footstool', 'Garde bench', 'Bunk bed', 'Hammock', 'Futon', 'Sofa bed', 'Coffee table', 'Dining table', 'Nightstand', 'Folding table', 'Cupboard', 'Chest', 'Wardrobe', 'Antique Wardrobe', 'Folding screen', 'Commode', 'Bin'],
+    [ProductType.Electronics]: ['Television', 'Laptop', 'Computer', 'Stand mixer', 'Hand mixer', 'Rice cooker', 'Juicer', 'Electric blanket', 'Toaster', 'Smartphone', 'Dumb phone', 'Hair dryer', 'Hair iron', 'Fridge', 'Oven', 'Vacuum cleaner', 'Game console', 'Headphones', 'Power strip', 'Luminaire', 'Gooseneck lamp', 'Electric fan', 'Synthesizer', ''],
+};
+
+export function fillOutTemplate(template) {
+    const names = [
+        RNG.pickFromArray(PeopleNames),
+        RNG.pickFromArray(PeopleNames),
+        RNG.pickFromArray(PeopleNames),
+        RNG.pickFromArray(PeopleNames),
+    ];
+
+    console.log(names);
+
+    return template
+        .replace(/%0/g, names[0])
+        .replace(/%1/g, names[1])
+        .replace(/%2/g, names[2])
+        .replace(/%3/g, names[3])
+        ;
+}
 
 // ---- //
 
