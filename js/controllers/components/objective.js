@@ -166,6 +166,7 @@ export class ObjectiveController {
         }
         else {
             this.submitButton.style.display = 'none';
+            this.productGrid.style.display = 'none';
             this.categoryIconElement.classList = 'card-header-icon icon-category type-' + this.data.categoryId;
         }
     }
@@ -199,6 +200,7 @@ export class ObjectiveController {
 
             if (objective.submitted.length >= objective.goalQuantity) {
                 objective.completionTimestamp = Date.now();
+                self.toggleContent();
             }
 
             if (isObjectiveListCompleted(objectiveData.objectiveList)) {
@@ -210,7 +212,7 @@ export class ObjectiveController {
                 navigationController.openPage('home-page');
             }
 
-            this.data = objective;
+            self.data = objective;
         });
 
         this.initializeHTMLFromObjectiveData();
