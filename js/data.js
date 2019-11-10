@@ -79,6 +79,7 @@ export const ProductNameByProductType = {
     [ProductType.Craft]: ['Whisk', 'Rolling pin', 'Chisel', 'Hammer', 'Handbag', 'Pocket watch', 'Paper fan', 'Silk scarf', 'Fountain pen', 'Ceramic vase', 'Clay vase', 'Woven basket', 'Wooden bowl', 'Metal earrings', 'Paper hat', 'Golden ring', 'Polished ruby', 'Silver necklace', 'Glass teacup', 'Paintbrush', 'Painting'],
     [ProductType.Furniture]: ['Desk', 'Desk chair', 'Reclining chair', '3-place sofa', 'Single bed', 'Queen size bed', 'Bookshelf', 'Bean bag', 'Bar stool', 'Rocking chair', 'Footstool', 'Garde bench', 'Bunk bed', 'Hammock', 'Futon', 'Sofa bed', 'Coffee table', 'Dining table', 'Nightstand', 'Folding table', 'Cupboard', 'Chest', 'Wardrobe', 'Antique Wardrobe', 'Folding screen', 'Commode', 'Bin'],
     [ProductType.Electronics]: ['Television', 'Laptop', 'Computer', 'Stand mixer', 'Hand mixer', 'Rice cooker', 'Juicer', 'Electric blanket', 'Toaster', 'Smartphone', 'Dumb phone', 'Hair dryer', 'Hair iron', 'Fridge', 'Oven', 'Vacuum cleaner', 'Game console', 'Headphones', 'Power strip', 'Luminaire', 'Gooseneck lamp', 'Electric fan', 'Synthesizer', ''],
+    [ProductType.Other]: ['Unknown'],
 };
 
 export function fillOutTemplate(template) {
@@ -99,6 +100,22 @@ export function fillOutTemplate(template) {
 }
 
 // ---- //
+
+export function productMatchObjective(product, objective) {
+    switch (objective.objectiveType) {
+        case 0:
+            return true;
+        case 1:
+            return (product.category === objective.categoryId);
+        case 2:
+            return (generateMakerName(product.maker.id) === generateMakerName(objective.makerId));
+        case 3:
+            return (getProductName(objective.categoryId, objective.productId) === getProductName(product.category, product.product.id));
+        case 4:
+            return ((generateMakerName(product.maker.id) === generateMakerName(objective.makerId))
+                    && (getProductName(objective.categoryId, objective.productId) === getProductName(product.category, product.product.id)));
+        }
+}
 
 export function addProductToInventory(inventory, code, quantity) {
     inventory.products[code] = inventory.products[code] || generateProduct(code);

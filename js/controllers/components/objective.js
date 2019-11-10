@@ -113,7 +113,7 @@ export class ObjectiveController {
 
         if (this.data.goalQuantity > this.data.submitted.length) {
             Object.getOwnPropertyNames(inventory.products)
-                .filter(productCode => true || productMatchObjective(inventory.products[productCode], this.data))
+                .filter(productCode => productMatchObjective(inventory.products[productCode], this.data))
                 .sort((productCodeA, productCodeB) => (inventory.products[productCodeB].quantity - inventory.products[productCodeA].quantity))
                 .forEach(productCode => {
                     const product = inventory.products[productCode];
