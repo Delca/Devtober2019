@@ -30,9 +30,9 @@ class CollectionPageController {
         let categoryContents = Object.getOwnPropertyNames(this.inventory.products)
             .map(productCode => this.inventory.products[productCode])
             .reduce((acc, val) => {
-                acc[val.type] = acc[val.type] || [];
+                acc[val.category] = acc[val.category] || [];
 
-                acc[val.type].push({
+                acc[val.category].push({
                     product: val,
                     selectedAmount: 0,
                 });
@@ -44,12 +44,12 @@ class CollectionPageController {
             this.collectionGrid.removeChild(this.collectionGrid.firstChild);
         }
 
-        Object.getOwnPropertyNames(categoryContents).forEach(type => {
+        Object.getOwnPropertyNames(categoryContents).forEach(category => {
             let categoryData = {
-                type,
+                category,
                 isCategory: true,
-                name: `Category #${type}`,
-                content: categoryContents[type]
+                name: ProductTypeName[category],
+                content: categoryContents[category]
             }
 
             instantiateTemplate('inventory-collection-display-component', this.collectionGrid, new InventoryCollectionDisplayController(categoryData));
@@ -77,12 +77,12 @@ class CollectionPageController {
             this.collectionGrid.removeChild(this.collectionGrid.firstChild);
         }
 
-        Object.getOwnPropertyNames(makerContents).forEach(type => {
+        Object.getOwnPropertyNames(makerContents).forEach(makerId => {
             let makerData = {
-                type,
+                category: generateCategory(makerId),
                 isCategory: false,
-                name: `Maker #${type}`,
-                content: makerContents[type]
+                name: generateMakerName(makerId),
+                content: makerContents[makerId]
             }
 
             instantiateTemplate('inventory-collection-display-component', this.collectionGrid, new InventoryCollectionDisplayController(makerData));

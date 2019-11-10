@@ -18,8 +18,11 @@ export class DetailsModalController {
         this.orderLessButtonElement = element.querySelector('.order-number-input > span:first-child');
         this.orderMoreButtonElement = element.querySelector('.order-number-input > span:last-child');
         this.placeOrderButtonElement = element.querySelector('.place-order-button');
+        this.titleElement = element.querySelector('.card-header-title');
 
-        this.categoryIcon.classList += ` type-${this.data.type}`;
+        this.titleElement.innerText = this.data.code;
+        createIcon(CategoryIcons[this.data.category], this.categoryIcon.children[0]);
+        this.categoryIcon.classList += ` type-${this.data.category}`;
         this.closeIcon.addEventListener('click', () => this.close());
 
         this.orderPanelTitleElement.innerText = `Order from ${this.data.maker.name}`;
@@ -40,7 +43,7 @@ export class DetailsModalController {
     updateProductInfo() {
         this.tagGridElement.children[0].children[1].innerText = this.data.maker.name;
         this.tagGridElement.children[1].children[1].innerText = 0;
-        this.tagGridElement.children[2].children[1].innerText = ProductTypeName[this.data.type];
+        this.tagGridElement.children[2].children[1].innerText = ProductTypeName[this.data.category];
         this.tagGridElement.children[3].children[1].innerText = 0;
         this.tagGridElement.children[4].children[1].innerText = this.data.product.name;
         this.tagGridElement.children[5].children[1].innerText = 0;

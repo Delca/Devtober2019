@@ -51,6 +51,14 @@ function importFile(callback) {
     });
 }
 
+function createIcon(iconClass, parent = document.body, classListSuffix = '') {
+    var iconElement = document.createElement('i');
+    iconElement.classList = `fas ${iconClass} ${classListSuffix}`;
+    parent.appendChild(iconElement);
+
+    return iconElement;
+}
+
 function clamp(a, b, c) {
     return (Math.min(Math.max(a, b), c));
 }

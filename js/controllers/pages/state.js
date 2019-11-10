@@ -41,8 +41,7 @@ class StatePageController {
 
         this.objectiveData.objectiveList.objectives.forEach((objective, i) => {
             const controller = new ObjectiveController(objective, i);
-            instantiateTemplate('objective-component', this.objectiveTabElement, controller)
-                .querySelector('.icon-category').classList += ' type-' + (i % 5);
+            instantiateTemplate('objective-component', this.objectiveTabElement, controller);
         });
     }
 

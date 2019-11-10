@@ -15,14 +15,15 @@ export class InventoryCollectionDisplayController {
         this.productGrid = element.querySelector('.product-grid');
 
         // Initialize the elements
-        this.categoryIcon.classList += ` type-${this.data.type}`;
+        createIcon(CategoryIcons[this.data.category], this.categoryIcon.children[0]);
+        this.categoryIcon.classList += ` type-${this.data.category}`;
         this.element.querySelector('.card-header-icon.icon-dropdown').addEventListener('click', _ => this.toggleContent());
         this.initializeProductRows();
         this.updateSelection();
 
         // Retrieve the correct height to animate the dropdown 
         this.maxContentHeight = this.contentElement.clientHeight;
-        //this.contentElement.style.maxHeight = '0px';
+        this.contentElement.style.maxHeight = '0px';
     }
 
     updateSelection(quantity = 0) {

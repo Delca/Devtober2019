@@ -15,7 +15,8 @@ export class InventoryCategorySelectorController {
         this.productGrid = element.querySelector('.product-grid');
 
         // Initialize the elements
-        this.categoryIcon.classList += ` type-${this.data.type}`;
+        createIcon(CategoryIcons[this.data.category], this.categoryIcon.children[0]);
+        this.categoryIcon.classList += ` type-${this.data.category}`;
         this.element.querySelector('.card-header-icon.icon-dropdown').addEventListener('click', _ => this.toggleContent());
         this.initializeProductRows();
         this.updateSelection();

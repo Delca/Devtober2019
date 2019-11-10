@@ -16,8 +16,10 @@ export class ObjectiveController {
         this.objectiveProductCounterElement = element.querySelector('.objective-product');
         this.productGrid = element.querySelector('.product-grid');
         this.submitButton = element.querySelector('.submit-button');
+        this.categoryIconElement = element.querySelector('.icon-category');
 
         // Initialize the elements
+        createIcon((this.data.objectiveType === 0 ? 'fa-smile' : CategoryIcons[this.data.categoryId]), this.categoryIconElement.children[0]);
         this.element.querySelector('.card-header-icon.icon-dropdown').addEventListener('click', _ => this.toggleContent());
         this.submitButton.addEventListener('click', _ => this.submitSelection());
 
@@ -55,15 +57,24 @@ export class ObjectiveController {
         this.objectiveMakerCounterElement.children[1].innerText = generateMakerName(this.data.makerId);
         this.objectiveProductCounterElement.children[1].innerText = getProductName(this.data.categoryId, this.data.productId);
 
-        this.objectiveCategoryCounterElement.style.display = 'none';
-        this.objectiveMakerCounterElement.style.display = 'none';
-        this.objectiveProductCounterElement.style.display = 'none';
+        [
+            this.objectiveCategoryCounterElement,
+            this.objectiveMakerCounterElement,
+            this.objectiveProductCounterElement,
+        ].forEach(tagElement => {
+            tagElement.style.display = 'none';
 
+            while (tagElement.children[0].firstChild) {
+                tagElement.children[0].removeChild(tagElement.children[0].firstChild);
+            }
+
+            createIcon(CategoryIcons[this.data.categoryId], tagElement.children[0]);
+        });
+        
         let description = '';
         switch (this.data.objectiveType) {
             case 0:
                 description = 'Anything will do, we just need some products in the shop!';
-                this.objectiveCategoryCounterElement.style.display = 'flex';
                 break;
             case 1:
                 description = 'We need a specific kind of product, stat!';
@@ -155,6 +166,7 @@ export class ObjectiveController {
         }
         else {
             this.submitButton.style.display = 'none';
+            this.categoryIconElement.classList = 'card-header-icon icon-category type-' + this.data.categoryId;
         }
     }
 

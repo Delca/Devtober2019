@@ -35,6 +35,15 @@ export const EntityCount = {
     Maker: 128
 };
 
+export const CategoryIcons = {
+    0: 'fa-apple-alt',
+    1: 'fa-drumstick-bite',
+    2: 'fa-paint-brush',
+    3: 'fa-couch',
+    4: 'fa-microchip',
+    5: 'fa-question-circle',
+}
+
 var companies = {
     vegetables: ['Ol\'Joe Farm', 'Anoty cooperative', 'Nymia city fields'],
     meats: ['Butchery Rheto and sons', 'Gurgling Fisherman'],
@@ -67,7 +76,7 @@ const nonVowels = /[^aiueoy]/;
 export const ProductNameByProductType = {
     [ProductType.Vegetable]: ['Tomato', 'Banana', 'Lettuce', 'Bell pepper', 'Beans', 'Chickpeas', 'Raspberries', 'Apple', 'Cucumber', 'Carrot', 'Potato', 'Sweet Potato', 'Lentils', 'Kiwi', 'Blueberries', 'Orange', 'Grapes', 'Avocado', 'Pear', 'Lemon', 'Plum', 'Apricot', 'Cherries', 'Cocount', 'Lychee', 'Grapefruit', 'Nectarine', 'Yuzu', 'Cranberry', 'Watermelon', 'Pineapple', 'Dragon fruit', 'Pomegranate', 'Melon'],
     [ProductType.Meat]: ['Beef tongue', 'Ribeye', 'Round steak', 'Flank steak', 'Sirloin steak', 'T-bone steak', 'Lamb breast', 'Lamb shank', 'Chump chops', 'Bacon', 'Pork chops', 'Pork ribs', 'Ham', 'Sausages', 'Dry sausages', 'Shrimps', 'Mackerel', 'Herring', 'Tuna', 'Cod', 'Sardine', 'Crab', 'Squid'],
-    [ProductType.Craft]: ['Whisk', 'Rolling pin', 'Chisel', 'Hammer', 'Handbag', 'Pocket watch', 'Paper fan', 'Silk scarf', 'Fountain pen', 'Ceramic vase', 'Clay vase', 'Woven basket', 'Wooden bowl', 'Metal earrings', 'Paper hat', 'Golden ring', 'Polished ruby', 'Silver necklace', 'Glass teacup'],
+    [ProductType.Craft]: ['Whisk', 'Rolling pin', 'Chisel', 'Hammer', 'Handbag', 'Pocket watch', 'Paper fan', 'Silk scarf', 'Fountain pen', 'Ceramic vase', 'Clay vase', 'Woven basket', 'Wooden bowl', 'Metal earrings', 'Paper hat', 'Golden ring', 'Polished ruby', 'Silver necklace', 'Glass teacup', 'Paintbrush', 'Painting'],
     [ProductType.Furniture]: ['Desk', 'Desk chair', 'Reclining chair', '3-place sofa', 'Single bed', 'Queen size bed', 'Bookshelf', 'Bean bag', 'Bar stool', 'Rocking chair', 'Footstool', 'Garde bench', 'Bunk bed', 'Hammock', 'Futon', 'Sofa bed', 'Coffee table', 'Dining table', 'Nightstand', 'Folding table', 'Cupboard', 'Chest', 'Wardrobe', 'Antique Wardrobe', 'Folding screen', 'Commode', 'Bin'],
     [ProductType.Electronics]: ['Television', 'Laptop', 'Computer', 'Stand mixer', 'Hand mixer', 'Rice cooker', 'Juicer', 'Electric blanket', 'Toaster', 'Smartphone', 'Dumb phone', 'Hair dryer', 'Hair iron', 'Fridge', 'Oven', 'Vacuum cleaner', 'Game console', 'Headphones', 'Power strip', 'Luminaire', 'Gooseneck lamp', 'Electric fan', 'Synthesizer', ''],
 };

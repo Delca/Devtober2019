@@ -364,7 +364,7 @@ span.stick-type {
 
 .details-modal-component .card-content {
     height: 100%;
-    padding: 5% 0 0 0;
+    padding: 5%;
 }
 
 .details-modal-component .tag-grid {
@@ -373,6 +373,7 @@ span.stick-type {
 }
 .details-modal-component .tag-grid .tags {
     align-items: flex-start;
+    margin-bottom: 0;
 }
 
 .details-modal-component .tag-grid .tags:nth-child(2n) {
@@ -399,9 +400,6 @@ span.stick-type {
     pointer-events: none;
     color: rgb(255, 255, 255, 0.9);
     background-color: rgb(173, 173, 173);
-
-    font-size: 1.2em;
-
 
     border-radius: 5px;
     padding: 2.5px 5%;
