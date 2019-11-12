@@ -100,8 +100,8 @@ console.log('app.js LOG');
 window.addEventListener('load', async () => {
     console.log('app.js LOAD LOG');
 
-    if (window.location.hostname !== 'localhost') {
-        ScannerModalController.checkForVideoInput();
+    if (window.location.hostname !== 'localhost' && window.ScannerModalController) {
+        window.ScannerModalController.checkForVideoInput();
     }
 
     var parser = new DOMParser();
@@ -140,5 +140,5 @@ window.addEventListener('load', async () => {
         resolve = r;
     });
 
-    navigationController.openPage('home-page');
+    window.navigationController.openPage('home-page');
 });

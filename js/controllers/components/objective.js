@@ -70,7 +70,7 @@ export class ObjectiveController {
 
             createIcon(CategoryIcons[this.data.categoryId], tagElement.children[0]);
         });
-        
+
         let description = '';
         switch (this.data.objectiveType) {
             case 0:
@@ -209,7 +209,7 @@ export class ObjectiveController {
                 objectiveData.userLevel += 1;
                 objectiveData.objectiveList = null;
 
-                navigationController.openPage('home-page');
+                window.navigationController.openPage('home-page');
             }
 
             self.data = objective;
