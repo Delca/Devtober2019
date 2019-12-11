@@ -67,7 +67,7 @@ export const PeopleNames = [
     'Leo', 'Lucas', 'Sam', 'Morgana', 'Richard', 'Lee', 'Marion', 'Carla', 'Louis',
     'Ben', 'Yuna', 'Nora', 'Myriam', 'Laura', 'Abril', 'Salma', 'Aya', 'Mark', 'Omar',
     'Ali', 'Juan', 'Augustin', 'Eli', 'James', 'Abigail', 'Oliver', 'Robin', 'Hans',
-    'William', 'Aaron', 'Tom', 'Charlie', 'Oskar', 'Emma', 'Lucie', 'Jack', 'Daniel' 
+    'William', 'Aaron', 'Tom', 'Charlie', 'Oskar', 'Emma', 'Lucie', 'Jack', 'Daniel'
 ];
 
 const vowels = /[aiueoy]/;
@@ -100,6 +100,11 @@ export function fillOutTemplate(template) {
 }
 
 // ---- //
+
+export function clearUserData() {
+    saveUserData('inventory', {});
+    saveUserData('objective', {});
+}
 
 export function productMatchObjective(product, objective) {
     switch (objective.objectiveType) {
