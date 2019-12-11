@@ -1,6 +1,6 @@
-self.importScripts('/Restock/js/data.js');
+//self.importScripts('/Restock/js/data.js');
 
-console.log('[SW] Done loading data', companies.electronics);
+//console.log('[SW] Done loading data', companies.electronics);
 
 var cacheName = 'pwaTest';
 var appFiles = [

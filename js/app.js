@@ -38,6 +38,47 @@ var importFilenames = [
 ];
 var index = 0;
 
+function importFileAsync(filesToImport) {
+    let resolveFunction;
+    let rejectFunction;
+
+    let processedFileCount = 0;
+
+    let fileImportPromise = new Promise((resolve, reject) => {
+        resolveFunction = resolve;
+        rejectFunction = reject;
+    });
+
+    filesToImport.forEach(fileToImport => {
+        if (processedFileCount < 0) {
+            return;
+        }
+
+        import(fileToImport).then(
+            module => {
+                if (processedFileCount < 0) {
+                    return;
+                }
+
+                Object.assign(window, module);
+
+                console.log(`Imported ${importFilenames[index]}`);
+                ++processedFileCount;
+
+                if (processedFileCount == filesToImport.length) {
+                    resolveFunction();
+                }
+            },
+            err => {
+                processedFileCount = -1;
+                rejectFunction(err);
+            }
+        );
+    });
+
+    return fileImportPromise;
+}
+
 function importFile(callback) {
     if (importFilenames.length === index) {
         return;
@@ -93,12 +134,18 @@ function instantiateTemplate(templateID, parent = document.body, controller = nu
     return instance;
 }
 
-importFile(importFile);
+//importFile(importFile);
+
+let fileImportPromise = importFileAsync(importFilenames);
 
 console.log('app.js LOG');
 
 window.addEventListener('load', async () => {
     console.log('app.js LOAD LOG');
+
+    await fileImportPromise;
+
+    console.log('All files loaded');
 
     if (window.location.hostname !== 'localhost' && window.ScannerModalController) {
         window.ScannerModalController.checkForVideoInput();
